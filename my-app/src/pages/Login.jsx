@@ -1,5 +1,7 @@
 import mainLogo from "../assets/Logo-hodu.png";
 import styled from "styled-components";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const LoginSection = styled.section`
   position: absolute;
@@ -88,6 +90,47 @@ const LinkFindPW = styled.a`
 `;
 
 const Login = () => {
+  // const username = document.querySelector("#username");
+  // const password = document.querySelector("#password");
+
+  const url = "https://openmarket.weniv.co.kr/";
+
+  const [account, setAccount] = useState({ username: "", password: "" });
+  const onChangeAccount = (e) => {
+    setAccount({
+      ...account,
+      [e.target.value]: e.target.value,
+    });
+  };
+
+  const instance = axios.create({
+    headers: {
+      Authorization: localStorage.getItem("token"),
+    },
+  });
+
+  const test = async () => {
+    try {
+      const response = await axios.post(url + "accounts/login", {
+        instance,
+        data: {
+          username: { account },
+          password: { account },
+          login_type: "BUYER",
+        },
+      });
+      console.log(response);
+      saveData(response.token);
+    } catch {
+      console.error("에러났다 인간아");
+    }
+  };
+  test();
+
+  const saveData = (response) => {
+    localStorage.setItem("token", response.token);
+  };
+
   return (
     <LoginSection>
       <h2 className="ir">로그인 페이지</h2>
@@ -104,10 +147,24 @@ const Login = () => {
       </SelectMemberBtn>
       <LoginDiv>
         <form action="">
-          <LoginInput type="text" placeholder="아이디" required />
-          <LoginInput type="password" placeholder="비밀번호" required />
+          <LoginInput
+            id="username"
+            name="username"
+            type="text"
+            placeholder="아이디"
+            onChange={onChangeAccount}
+            required
+          />
+          <LoginInput
+            id="password"
+            name="password"
+            type="password"
+            placeholder="비밀번호"
+            onChange={onChangeAccount}
+            required
+          />
         </form>
-        <LoginBtn>로그인</LoginBtn>
+        <LoginBtn type="submit">로그인</LoginBtn>
       </LoginDiv>
       <WrapLinkDiv>
         <LinkJoin href="#none">회원가입</LinkJoin>

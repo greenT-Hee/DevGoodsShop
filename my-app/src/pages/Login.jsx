@@ -93,43 +93,39 @@ const Login = () => {
   // const username = document.querySelector("#username");
   // const password = document.querySelector("#password");
 
-  const url = "https://openmarket.weniv.co.kr/";
-
-  const [account, setAccount] = useState({ username: "", password: "" });
-  const onChangeAccount = (e) => {
-    setAccount({
-      ...account,
+  const url = "http://13.209.150.154:8000/";
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const onChangeUsername = (e) => {
+    setUsername({
+      ...username,
       [e.target.value]: e.target.value,
     });
   };
-
-  const instance = axios.create({
-    headers: {
-      Authorization: localStorage.getItem("token"),
-    },
-  });
-
+  const onChangePassword = (e) => {
+    setPassword({
+      ...password,
+      [e.target.value]: e.target.value,
+    });
+  };
+  console.log(username, password);
   const test = async () => {
     try {
-      const response = await axios.post(url + "accounts/login", {
-        instance,
-        data: {
-          username: { account },
-          password: { account },
+      const response = await fetch(url + "accounts/login", {
+        method: "post",
+        body: {
+          username: username,
+          password: password,
           login_type: "BUYER",
         },
       });
-      console.log(response);
-      saveData(response.token);
+      const resJson = response.json();
+      console.log(resJson);
     } catch {
       console.error("에러났다 인간아");
     }
   };
   test();
-
-  const saveData = (response) => {
-    localStorage.setItem("token", response.token);
-  };
 
   return (
     <LoginSection>
@@ -152,7 +148,7 @@ const Login = () => {
             name="username"
             type="text"
             placeholder="아이디"
-            onChange={onChangeAccount}
+            onChange={onChangeUsername}
             required
           />
           <LoginInput
@@ -160,7 +156,7 @@ const Login = () => {
             name="password"
             type="password"
             placeholder="비밀번호"
-            onChange={onChangeAccount}
+            onChange={onChangePassword}
             required
           />
         </form>

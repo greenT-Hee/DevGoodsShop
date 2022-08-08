@@ -111,16 +111,16 @@ const Login = () => {
   console.log(username, password);
   const test = async () => {
     try {
-      const response = await fetch(url + "accounts/login", {
+      const response = await axios({
         method: "post",
+        url: url + "accounts/login",
         body: {
           username: username,
           password: password,
           login_type: "BUYER",
         },
       });
-      const resJson = response.json();
-      console.log(resJson);
+      console.log(response);
     } catch {
       console.error("에러났다 인간아");
     }

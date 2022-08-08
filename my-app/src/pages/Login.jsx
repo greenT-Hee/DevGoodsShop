@@ -92,11 +92,7 @@ const LinkFindPW = styled.li`
   margin: 0 16px;
 `;
 
-const Login = () => {
-  // const username = document.querySelector("#username");
-  // const password = document.querySelector("#password");
-
-  const url = "http://13.209.150.154:8000/";
+const Login = ({ baseURL }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const onChangeUsername = (e) => {
@@ -112,15 +108,16 @@ const Login = () => {
     });
   };
   console.log(username, password);
-  const test = async () => {
+  const login = async () => {
     try {
-      const response = await axios({
-        method: "post",
-        url: url + "accounts/login",
+      const response = await axios.post(baseURL + "accounts/login/", {
         body: {
           username: username,
           password: password,
           login_type: "BUYER",
+        },
+        Headers: {
+          "content-type": "application/json",
         },
       });
       console.log(response);
@@ -128,7 +125,6 @@ const Login = () => {
       console.error("에러났다 인간아");
     }
   };
-  // test();
 
   return (
     <LoginSection>

@@ -2,6 +2,7 @@ import mainLogo from "../assets/Logo-hodu.png";
 import styled from "styled-components";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const LoginSection = styled.section`
   position: absolute;
@@ -65,13 +66,14 @@ const WrapLinkDiv = styled.div`
   margin: 30px auto;
 `;
 
-const LinkJoin = styled.a`
-  text-decoration: none;
+const LinkJoin = styled.li`
+  list-style-type: none;
+  display: inline-block;
   font-size: 16px;
   color: #333333;
   margin: 0 16px;
 
-  ::before {
+  &::before {
     position: absolute;
     content: "";
     top: 528px;
@@ -82,8 +84,9 @@ const LinkJoin = styled.a`
   }
 `;
 
-const LinkFindPW = styled.a`
-  text-decoration: none;
+const LinkFindPW = styled.li`
+  list-style-type: none;
+  display: inline-block;
   font-size: 16px;
   color: #333333;
   margin: 0 16px;
@@ -125,7 +128,7 @@ const Login = () => {
       console.error("에러났다 인간아");
     }
   };
-  test();
+  // test();
 
   return (
     <LoginSection>
@@ -163,8 +166,15 @@ const Login = () => {
         <LoginBtn type="submit">로그인</LoginBtn>
       </LoginDiv>
       <WrapLinkDiv>
-        <LinkJoin href="#none">회원가입</LinkJoin>
-        <LinkFindPW href="#none">비밀번호 찾기</LinkFindPW>
+        <LinkJoin>
+          <Link
+            to="/signUp"
+            style={{ textDecoration: "none", color: "#333333" }}
+          >
+            회원가입
+          </Link>
+        </LinkJoin>
+        <LinkFindPW>비밀번호 찾기</LinkFindPW>
       </WrapLinkDiv>
     </LoginSection>
   );

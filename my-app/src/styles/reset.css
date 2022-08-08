@@ -143,6 +143,10 @@ button {
   cursor: pointer;
 }
 
+a {
+  text-decoration: none;
+}
+
 .ir {
   display: block;
   overflow: hidden;

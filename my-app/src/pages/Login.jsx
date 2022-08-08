@@ -61,7 +61,7 @@ const LoginBtn = styled.button`
   color: #fff;
 `;
 
-const WrapLinkDiv = styled.div`
+const WrapLinkDiv = styled.ul`
   width: fit-content;
   margin: 30px auto;
 `;

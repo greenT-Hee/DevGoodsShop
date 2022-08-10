@@ -4,13 +4,15 @@ import axios from "axios";
 import { useEffect } from "react";
 
 const Home = () => {
-  const baseURL = "https"
-    ? "https://openmarket.weniv.co.kr/"
-    : "http://13.209.150.154:8000/";
+  // const baseURL = "https"
+  //   ? "https://openmarket.weniv.co.kr/"
+  //   : "http://13.209.150.154:8000/";
 
   const getProductList = async () => {
     try {
-      const response = await axios.get(baseURL + "products/");
+      const response = await axios.get(
+        "https://openmarket.weniv.co.kr/products/"
+      );
       console.log(response);
     } catch {
       console.error("비상!!🛒");
@@ -22,7 +24,7 @@ const Home = () => {
 
   return (
     <>
-      <Header baseURL={baseURL} />
+      <Header />
       <Banner />
     </>
   );

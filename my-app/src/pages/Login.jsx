@@ -92,35 +92,38 @@ const LinkFindPW = styled.li`
   margin: 0 16px;
 `;
 
-const Login = ({ baseURL }) => {
+const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const onChangeUsername = (e) => {
-    setUsername({
-      ...username,
-      [e.target.value]: e.target.value,
-    });
+    setUsername(e.target.value);
   };
   const onChangePassword = (e) => {
-    setPassword({
-      ...password,
-      [e.target.value]: e.target.value,
-    });
+    setPassword(e.target.value);
   };
-  console.log(username, password);
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    login();
+  };
+
   const login = async () => {
     try {
-      const response = await axios.post(baseURL + "accounts/login/", {
-        body: {
-          username: username,
-          password: password,
-          login_type: "BUYER",
-        },
-        Headers: {
-          "content-type": "application/json",
-        },
-      });
-      console.log(response);
+      const response = await fetch(
+        "https://openmarket.weniv.co.kr/accounts/login/",
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify({
+            username: username,
+            password: password,
+            login_type: "BUYER",
+          }),
+        }
+      );
+      const resJson = await response.json();
+      console.log(resJson);
     } catch {
       console.error("에러났다 인간아");
     }
@@ -141,12 +144,13 @@ const Login = ({ baseURL }) => {
         판매회원 로그인
       </SelectMemberBtn>
       <LoginDiv>
-        <form action="">
+        <form onSubmit={onSubmitHandler}>
           <LoginInput
             id="username"
             name="username"
             type="text"
             placeholder="아이디"
+            value={username}
             onChange={onChangeUsername}
             required
           />
@@ -155,11 +159,12 @@ const Login = ({ baseURL }) => {
             name="password"
             type="password"
             placeholder="비밀번호"
+            value={password}
             onChange={onChangePassword}
             required
           />
+          <LoginBtn>로그인</LoginBtn>
         </form>
-        <LoginBtn type="submit">로그인</LoginBtn>
       </LoginDiv>
       <WrapLinkDiv>
         <LinkJoin>

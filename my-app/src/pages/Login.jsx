@@ -125,6 +125,7 @@ const Login = () => {
     }
   };
 
+  //로그인 성공하면 productListpage로 이동
   const navigate = useNavigate();
   const succesLogin = () => {
     navigate("/productList");

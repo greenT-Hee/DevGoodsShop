@@ -1,18 +1,19 @@
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import "../src/styles/reset.css";
 import "../src/styles/global.css";
-import Home from "./pages/Home";
+import Home from "../src/pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import ProductList from "./pages/ProductList";
 
 function App() {
-  // 상품 목록-메인 홈(로그인했을 때, 안했을 때)
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signUp" element={<SignUp />} />
+        <Route exact path="/productList" element={<ProductList />} />
       </Routes>
     </BrowserRouter>
   );

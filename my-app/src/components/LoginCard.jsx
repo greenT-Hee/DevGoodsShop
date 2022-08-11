@@ -1,9 +1,6 @@
 import mainLogo from "../assets/Logo-hodu.png";
 import styled from "styled-components";
-import { useState } from "react";
-import AxiosInstance from "../Axios";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 const LoginSection = styled.section`
   position: absolute;
@@ -93,43 +90,7 @@ const LinkFindPW = styled.li`
   margin: 0 16px;
 `;
 
-const Login = () => {
-  //post req에 보낼 데이터 생성
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const onChangeUsername = (e) => {
-    setUsername(e.target.value);
-  };
-  const onChangePassword = (e) => {
-    setPassword(e.target.value);
-  };
-  // form의 새로고침 방지 및 login 함수 실행
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-    login();
-  };
-
-  const login = async () => {
-    try {
-      const response = await AxiosInstance.post("accounts/login/", {
-        username: username,
-        password: password,
-        login_type: "BUYER",
-      });
-      if (response.status === "200") {
-        succesLogin();
-      }
-      console.log(response.status);
-    } catch {
-      console.error("Error");
-    }
-  };
-
-  const navigate = useNavigate();
-  const succesLogin = () => {
-    navigate("/productList");
-  };
-
+const LoginCard = () => {
   return (
     <LoginSection>
       <h2 className="ir">로그인 페이지</h2>
@@ -164,7 +125,7 @@ const Login = () => {
             onChange={onChangePassword}
             required
           />
-          <LoginBtn onClick={succesLogin}>로그인</LoginBtn>
+          <LoginBtn>로그인</LoginBtn>
         </form>
       </LoginDiv>
       <WrapLinkDiv>
@@ -182,4 +143,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginCard;

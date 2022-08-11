@@ -6,11 +6,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const LoginSection = styled.section`
-  position: absolute;
+  margin: 80px auto;
   width: 550px;
-  top: 47%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 `;
 
 const MainLogo = styled.img`
@@ -117,7 +114,7 @@ const Login = () => {
         login_type: "BUYER",
       });
       if (response.status === "200") {
-        succesLogin();
+        // succesLogin();
       }
       console.log(response.status);
     } catch {
@@ -126,10 +123,10 @@ const Login = () => {
   };
 
   //로그인 성공하면 productListpage로 이동
-  const navigate = useNavigate();
-  const succesLogin = () => {
-    navigate("/productList");
-  };
+  // const navigate = useNavigate();
+  // const succesLogin = () => {
+  //   // navigate("/");
+  // };
 
   return (
     <LoginSection>
@@ -165,7 +162,7 @@ const Login = () => {
             onChange={onChangePassword}
             required
           />
-          <LoginBtn onClick={succesLogin}>로그인</LoginBtn>
+          <LoginBtn>로그인</LoginBtn>
         </form>
       </LoginDiv>
       <WrapLinkDiv>

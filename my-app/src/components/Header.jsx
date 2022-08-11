@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import mainLogo from "../assets/Logo-hodu.png";
 import cartLogo from "../assets/icon-shopping-cart.svg";
-import cartUser from "../assets/icon-user.svg";
+import userImg from "../assets/icon-user.svg";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const HeaderSection = styled.header`
   width: 100%;
@@ -51,10 +52,13 @@ const HeaderText = styled.p`
 `;
 
 const Header = () => {
+  const [userIcon, setUserIcon] = useState(userImg);
   return (
     <HeaderSection>
       <WrapHeader>
-        <MainLogo src={mainLogo} alt="홈페이지 로고" />
+        <Link to="/">
+          <MainLogo src={mainLogo} alt="홈페이지 로고" />
+        </Link>
         <Search type="text" />
         <WrapIcon>
           <a href="#none" style={{ textDecoration: "none" }}>
@@ -62,7 +66,7 @@ const Header = () => {
             <HeaderText>장바구니</HeaderText>
           </a>
           <Link to="/login" style={{ textDecoration: "none" }}>
-            <HeaderIcon src={cartUser} alt="로그인" />
+            <HeaderIcon src={userIcon} alt="로그인" />
             <HeaderText>로그인</HeaderText>
           </Link>
         </WrapIcon>

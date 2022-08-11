@@ -148,13 +148,13 @@ const SignUp = () => {
           <FlexDiv1>
             <JoinLabel htmlFor="username">
               아이디
-              <JoinIdInput id="username" name="username" type="text" required />
+              <JoinIdInput id="username" name="username" type="text" />
             </JoinLabel>
             <CheckOverlapBtn type="button">중복확인</CheckOverlapBtn>
           </FlexDiv1>
           <JoinLabel htmlFor="password">
             비밀번호
-            <JoinInput id="password" name="password" type="password" required />
+            <JoinInput id="password" name="password" type="password" />
           </JoinLabel>
           <JoinLabel htmlFor="checkPW">
             비밀번호 재확인

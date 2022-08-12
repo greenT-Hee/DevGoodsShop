@@ -1,5 +1,7 @@
+import { useState } from "react";
 import styled from "styled-components";
 import mainLogo from "../assets/Logo-hodu.png";
+import AxiosInstance from "../Axios";
 
 const LoginSection = styled.section`
   margin: 80px auto;
@@ -129,6 +131,52 @@ const LoginBtn = styled.button`
 `;
 
 const SignUp = () => {
+  const [username, setUsername] = useState("");
+  const [password1, setPassword1] = useState("");
+  const [password2, setPassword2] = useState("");
+  const [name, setName] = useState("");
+  const [phoneNum1, setPhoneNum1] = useState("");
+  const [phoneNum2, setPhoneNum2] = useState("");
+
+  const handleUsername = (e) => {
+    setUsername(e.target.value);
+  };
+  const handlePw1 = (e) => {
+    setPassword1(e.target.value);
+  };
+  const handlePw2 = (e) => {
+    setPassword2(e.target.value);
+  };
+  const handleName = (e) => {
+    setName(e.target.value);
+  };
+  const handlephoneNum1 = (e) => {
+    setPhoneNum1(e.target.value);
+  };
+  const handlephoneNum2 = (e) => {
+    setPhoneNum2(e.target.value);
+  };
+
+  const handleSubmitJoin = (e) => {
+    e.preventDefault();
+    signUp();
+  };
+  console.log(username, password1, password2, name, phoneNum1, phoneNum2);
+
+  const signUp = async () => {
+    try {
+      const response = await AxiosInstance.post("accounts/signup/", {
+        username: username, // 아이디
+        password: password1,
+        password2: password2,
+        phone_number: `01087974521`, // 전화번호는 010으로 시작하는 10~11자리 숫자
+        name: name, // 이름
+      });
+      console.log(response);
+    } catch {
+      console.error("ERROR");
+    }
+  };
   return (
     <LoginSection>
       <h2 className="ir">로그인 페이지</h2>
@@ -144,17 +192,27 @@ const SignUp = () => {
         판매회원 로그인
       </SelectMemberBtn>
       <LoginDiv>
-        <form>
+        <form onSubmit={handleSubmitJoin}>
           <FlexDiv1>
             <JoinLabel htmlFor="username">
               아이디
-              <JoinIdInput id="username" name="username" type="text" />
+              <JoinIdInput
+                id="username"
+                name="username"
+                type="text"
+                onChange={handleUsername}
+              />
             </JoinLabel>
-            <CheckOverlapBtn type="button">중복확인</CheckOverlapBtn>
+            <CheckOverlapBtn type="submit">중복확인</CheckOverlapBtn>
           </FlexDiv1>
           <JoinLabel htmlFor="password">
             비밀번호
-            <JoinInput id="password" name="password" type="password" />
+            <JoinInput
+              id="password"
+              name="password"
+              type="password"
+              onChange={handlePw1}
+            />
           </JoinLabel>
           <JoinLabel htmlFor="checkPW">
             비밀번호 재확인
@@ -163,12 +221,17 @@ const SignUp = () => {
               id="checkPW"
               name="password"
               type="password"
-              required
+              onChange={handlePw2}
             />
           </JoinLabel>
           <JoinLabel htmlFor="name">
             이름
-            <JoinInput id="name" name="name" type="text" required />
+            <JoinInput
+              id="name"
+              name="name"
+              type="text"
+              onChange={handleName}
+            />
           </JoinLabel>
           <JoinLabel htmlFor="number">
             휴대폰번호
@@ -179,8 +242,18 @@ const SignUp = () => {
                 <option value="016">016</option>
                 <option value="017">017</option>
               </SelectFirstNum>
-              <JoinNumberInput id="number" name="number" type="text" required />
-              <JoinNumberInput id="number" name="number" type="text" required />
+              <JoinNumberInput
+                id="number"
+                name="number"
+                type="text"
+                onChange={handlephoneNum1}
+              />
+              <JoinNumberInput
+                id="number"
+                name="number"
+                type="text"
+                onChange={handlephoneNum2}
+              />
             </FlexDiv1>
           </JoinLabel>
           <JoinLabel htmlFor="이메일">
@@ -189,15 +262,15 @@ const SignUp = () => {
           </JoinLabel>
         </form>
       </LoginDiv>
-      <form action="">
+      <form onSubmit={handleSubmitJoin}>
         <CheckBoxP>
           <input type="checkbox" />
           호두샵의 <a href="#none">이용약관</a> 및{" "}
           <a href="#none">개인정보처리방침</a>에 대한 내용을 확인하였고
           동의합니다.
         </CheckBoxP>
+        <LoginBtn type="submit">가입하기</LoginBtn>
       </form>
-      <LoginBtn>가입하기</LoginBtn>
     </LoginSection>
   );
 };

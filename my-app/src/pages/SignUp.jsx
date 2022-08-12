@@ -131,12 +131,14 @@ const LoginBtn = styled.button`
 `;
 
 const SignUp = () => {
+  //
   const [username, setUsername] = useState("");
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
   const [name, setName] = useState("");
   const [phoneNum1, setPhoneNum1] = useState("");
   const [phoneNum2, setPhoneNum2] = useState("");
+  const [phoneNum3, setPhoneNum3] = useState("");
 
   const handleUsername = (e) => {
     setUsername(e.target.value);
@@ -156,12 +158,24 @@ const SignUp = () => {
   const handlephoneNum2 = (e) => {
     setPhoneNum2(e.target.value);
   };
-
+  const handlephoneNum3 = (e) => {
+    setPhoneNum3(e.target.value);
+  };
+  // 가입하기 버튼
   const handleSubmitJoin = (e) => {
     e.preventDefault();
     signUp();
   };
-  console.log(username, password1, password2, name, phoneNum1, phoneNum2);
+  console.log(
+    username,
+    password1,
+    password2,
+    name,
+    phoneNum1,
+    phoneNum2,
+    phoneNum3,
+    handlephoneNum3
+  );
 
   const signUp = async () => {
     try {
@@ -169,7 +183,7 @@ const SignUp = () => {
         username: username, // 아이디
         password: password1,
         password2: password2,
-        phone_number: `01087974521`, // 전화번호는 010으로 시작하는 10~11자리 숫자
+        phone_number: `${phoneNum1}${phoneNum2}`, // 전화번호는 010으로 시작하는 10~11자리 숫자
         name: name, // 이름
       });
       console.log(response);
@@ -236,23 +250,27 @@ const SignUp = () => {
           <JoinLabel htmlFor="number">
             휴대폰번호
             <FlexDiv1>
-              <SelectFirstNum name="firstPhoneNum">
+              <SelectFirstNum
+                name="phoneNum1"
+                id="phoneNum1"
+                onChange={handlephoneNum1}
+              >
                 <option value="010">010</option>
                 <option value="011">011</option>
                 <option value="016">016</option>
                 <option value="017">017</option>
               </SelectFirstNum>
               <JoinNumberInput
-                id="number"
-                name="number"
-                type="text"
-                onChange={handlephoneNum1}
-              />
-              <JoinNumberInput
-                id="number"
-                name="number"
+                id="phoneNum2"
+                name="phoneNum2"
                 type="text"
                 onChange={handlephoneNum2}
+              />
+              <JoinNumberInput
+                id="phoneNum3"
+                name="phoneNum3"
+                type="text"
+                onChange={handlephoneNum3}
               />
             </FlexDiv1>
           </JoinLabel>

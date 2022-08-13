@@ -114,7 +114,7 @@ const Login = () => {
         login_type: "BUYER",
       });
       if (response.status === "200") {
-        // succesLogin();
+        // successLogin();
       }
       console.log(response.status);
     } catch {
@@ -124,8 +124,8 @@ const Login = () => {
 
   //로그인 성공하면 productListpage로 이동
   // const navigate = useNavigate();
-  // const succesLogin = () => {
-  //   // navigate("/");
+  // const successLogin = () => {
+  //   // navigate("/productList");
   // };
 
   return (

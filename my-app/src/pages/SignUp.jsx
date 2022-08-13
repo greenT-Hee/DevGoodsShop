@@ -143,7 +143,7 @@ const SignUp = () => {
 
   const navigate = useNavigate();
   const successJoin = () => {
-    navigate("/");
+    navigate("/login");
   };
 
   // 가입하기 버튼 누르기

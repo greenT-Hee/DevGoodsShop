@@ -15,27 +15,14 @@ const MainLogo = styled.img`
   margin-left: 156px;
 `;
 
-const SelectMemberBtn = styled.button`
-  width: 275px;
-  height: 60px;
-  box-sizing: border-box;
-  margin-top: 71px;
-  border-radius: 10px 10px 0 0;
-  border: 1px solid #c4c4c4;
-  border-bottom: none;
-  font-weight: 500;
-  font-size: 18px;
-`;
-
 const LoginDiv = styled.div`
   width: 550px;
   height: 292px;
-  margin-top: -1px;
+  margin-top: 50px;
   padding: 35px;
   box-sizing: border-box;
-  border-radius: 0 0 10px 10px;
+  border-radius: 10px;
   border: 1px solid #c4c4c4;
-  border-top: none;
   background-color: #fff;
 `;
 
@@ -132,16 +119,6 @@ const Login = () => {
     <LoginSection>
       <h2 className="ir">로그인 페이지</h2>
       <MainLogo src={mainLogo} alt="메인로고" />
-      <SelectMemberBtn type="button">구매회원 로그인</SelectMemberBtn>
-      <SelectMemberBtn
-        type="button"
-        style={{
-          backgroundColor: "#F2F2F2",
-          borderBottom: "1px solid #c4c4c4",
-        }}
-      >
-        판매회원 로그인
-      </SelectMemberBtn>
       <LoginDiv>
         <form onSubmit={onSubmitHandler}>
           <LoginInput

@@ -46,9 +46,20 @@ const LoginBtn = styled.button`
   color: #fff;
 `;
 
-const WrapLinkDiv = styled.ul`
+const WrapLinkUl = styled.ul`
   width: fit-content;
+  position: relative;
   margin: 30px auto;
+
+  &::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 90px;
+    width: 1px;
+    height: 18px;
+    background-color: #333333;
+  }
 `;
 
 const LinkJoin = styled.li`
@@ -57,16 +68,6 @@ const LinkJoin = styled.li`
   font-size: 16px;
   color: #333333;
   margin: 0 16px;
-
-  &::before {
-    position: absolute;
-    content: "";
-    top: 528px;
-    left: 258px;
-    width: 1px;
-    height: 18px;
-    background-color: #333333;
-  }
 `;
 
 const LinkFindPW = styled.li`
@@ -100,10 +101,10 @@ const Login = () => {
         password: password,
         login_type: "BUYER",
       });
-      if (response.status === "200") {
+      if (response.status === 200) {
         // successLogin();
       }
-      console.log(response.status);
+      console.log(response);
     } catch {
       console.error("Error");
     }
@@ -142,7 +143,7 @@ const Login = () => {
           <LoginBtn>로그인</LoginBtn>
         </form>
       </LoginDiv>
-      <WrapLinkDiv>
+      <WrapLinkUl>
         <LinkJoin>
           <Link
             to="/signUp"
@@ -152,7 +153,7 @@ const Login = () => {
           </Link>
         </LinkJoin>
         <LinkFindPW>비밀번호 찾기</LinkFindPW>
-      </WrapLinkDiv>
+      </WrapLinkUl>
     </LoginSection>
   );
 };

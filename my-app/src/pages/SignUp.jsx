@@ -45,7 +45,7 @@ const JoinIdInput = styled.input`
   border: 1px solid #c4c4c4;
 
   &:active,
-  :hover {
+  :focus {
     border: 1px solid #21bf48;
   }
 `;
@@ -69,7 +69,7 @@ const JoinInput = styled.input`
   border-radius: 5px;
 
   &:active,
-  :hover {
+  &:focus {
     border: 1px solid #21bf48;
   }
 `;
@@ -90,6 +90,11 @@ const LoginBtn = styled.button`
 `;
 
 const ErrorMsg = styled.p`
+  padding-bottom: 16px;
+  color: red;
+`;
+
+const SuccessMsg = styled.p`
   padding-bottom: 16px;
   color: #21bf48;
 `;
@@ -123,10 +128,13 @@ const SignUp = () => {
         username: username, // 아이디
         password: password1,
         password2: password2,
-        phone_number: phoneNum, // 전화번호는 010으로 시작하는 10~11자리 숫자
+        phone_number: phoneNum,
         name: name, // 이름
       });
       console.log(response);
+      if (response.status === "201") {
+        //home 화면으로 넘어가기 (navigation)
+      }
     } catch {
       console.error("ERROR");
     }
@@ -208,6 +216,9 @@ const SignUp = () => {
     if (!patternPhoneNum.test(phoneNumCurrent)) {
       setPhoneNumMsg("- 없이 010으로 시작하는 10-11자리 숫자를 입력하세요");
       setIsPhoneNum(false);
+    } else {
+      setPhoneNumMsg("올바른 형식입니다 :)");
+      setIsPhoneNum(true);
     }
   }, []);
 
@@ -229,7 +240,12 @@ const SignUp = () => {
               />
               <CheckOverlapBtn>중복확인</CheckOverlapBtn>
             </FlexDiv1>
-            {username.length > 0 && <ErrorMsg>{usernameMsg}</ErrorMsg>}
+            {(username.length > 0 && !isUsername && (
+              <ErrorMsg>{usernameMsg}</ErrorMsg>
+            )) ||
+              (username.length > 0 && isUsername && (
+                <SuccessMsg>{usernameMsg}</SuccessMsg>
+              ))}
           </JoinLabel>
           <JoinLabel htmlFor="password">
             비밀번호
@@ -240,7 +256,12 @@ const SignUp = () => {
               onChange={handlePw1}
               required
             />
-            {password1.length > 0 && <ErrorMsg>{password1Msg}</ErrorMsg>}
+            {(password1.length > 0 && !isPassword1 && (
+              <ErrorMsg>{password1Msg}</ErrorMsg>
+            )) ||
+              (password1.length > 0 && isPassword1 && (
+                <SuccessMsg>{password1Msg}</SuccessMsg>
+              ))}
           </JoinLabel>
           <JoinLabel htmlFor="checkPW">
             비밀번호 재확인
@@ -251,7 +272,12 @@ const SignUp = () => {
               onChange={handlePw2}
               required
             />
-            {password2.length > 0 && <ErrorMsg>{password2Msg}</ErrorMsg>}
+            {(password2.length > 0 && !isPassword2 && (
+              <ErrorMsg>{password2Msg}</ErrorMsg>
+            )) ||
+              (password2.length > 0 && isPassword2 && (
+                <SuccessMsg>{password2Msg}</SuccessMsg>
+              ))}
           </JoinLabel>
           <JoinLabel htmlFor="name">
             이름
@@ -262,7 +288,8 @@ const SignUp = () => {
               onChange={handleName}
               required
             />
-            {password1.length > 0 && <ErrorMsg>{nameMsg}</ErrorMsg>}
+            {(name.length > 0 && !isName && <ErrorMsg>{nameMsg}</ErrorMsg>) ||
+              (name.length > 0 && isName && <SuccessMsg>{nameMsg}</SuccessMsg>)}
           </JoinLabel>
           <JoinLabel htmlFor="number">
             휴대폰번호
@@ -273,7 +300,12 @@ const SignUp = () => {
               onChange={handlephoneNum}
               required
             />
-            {phoneNum.length > 0 && <ErrorMsg>{phoneNumMsg}</ErrorMsg>}
+            {(phoneNum.length > 0 && !isPhoneNum && (
+              <ErrorMsg>{phoneNumMsg}</ErrorMsg>
+            )) ||
+              (phoneNum.length > 0 && isPhoneNum && (
+                <SuccessMsg>{phoneNumMsg}</SuccessMsg>
+              ))}
           </JoinLabel>
           <JoinLabel htmlFor="이메일">
             이메일

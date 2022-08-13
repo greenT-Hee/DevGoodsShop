@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import { Navigate, Router, useNavigate } from "react-router";
 import styled from "styled-components";
 import mainLogo from "../assets/Logo-hodu.png";
 import AxiosInstance from "../Axios";
@@ -122,7 +123,7 @@ const SignUp = () => {
   const [isName, setIsName] = useState(false);
   const [isPhoneNum, setIsPhoneNum] = useState(false);
 
-  const signUp = useCallback(async () => {
+  const signUp = async () => {
     try {
       const response = await AxiosInstance.post("accounts/signup/", {
         username: username, // 아이디
@@ -132,13 +133,18 @@ const SignUp = () => {
         name: name, // 이름
       });
       console.log(response);
-      if (response.status === "201") {
-        //home 화면으로 넘어가기 (navigation)
+      if (response.status === 201) {
+        successJoin();
       }
     } catch {
       console.error("ERROR");
     }
-  }, [password1, username, password2, name, phoneNum]);
+  };
+
+  const navigate = useNavigate();
+  const successJoin = () => {
+    navigate("/");
+  };
 
   // 가입하기 버튼 누르기
   const handleSubmitJoin = (e) => {

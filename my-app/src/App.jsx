@@ -13,15 +13,10 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signUp" element={<SignUp />} />
-        <Route exact path="/productList" element={<ProductList />} />
+        <Route exact path="/hodu/productList" element={<ProductList />} />
       </Routes>
     </BrowserRouter>
   );
-
-  // 상품 디테일
-  // 장바구니
-  // 결제 페이지
-  // 404 페이지
 }
 
 export default App;

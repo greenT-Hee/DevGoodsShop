@@ -2,7 +2,6 @@ import styled from "styled-components";
 import mainLogo from "../assets/Logo-hodu.png";
 import cartLogo from "../assets/icon-shopping-cart.svg";
 import userImg from "../assets/icon-user.svg";
-import myPageIcon from "../assets/icon-user.svg";
 import { Link } from "react-router-dom";
 
 const HeaderSection = styled.header`

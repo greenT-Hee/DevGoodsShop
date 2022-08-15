@@ -119,7 +119,9 @@ const Login = () => {
   return (
     <LoginSection>
       <h2 className="ir">로그인 페이지</h2>
-      <MainLogo src={mainLogo} alt="메인로고" />
+      <Link to="/">
+        <MainLogo src={mainLogo} alt="메인로고" />
+      </Link>
       <LoginDiv>
         <form onSubmit={onSubmitHandler}>
           <LoginInput

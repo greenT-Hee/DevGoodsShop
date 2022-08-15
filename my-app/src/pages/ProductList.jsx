@@ -1,11 +1,11 @@
 import React from "react";
-import Header from "../components/Header";
+import HomeHeader from "../components/headers/HomeHeader";
 import Banner from "../components/productList/Banner";
 
 export default function ProductList() {
   return (
     <>
-      <Header />
+      <HomeHeader />
       <Banner />
     </>
   );

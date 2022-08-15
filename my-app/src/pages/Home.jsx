@@ -1,4 +1,4 @@
-import HomeHeader from "../components/headers/HomeHeader";
+import HomeHeader from "../components/Header";
 import Banner from "../components/productList/Banner";
 import AxiosInstance from "../Axios";
 import { useEffect } from "react";

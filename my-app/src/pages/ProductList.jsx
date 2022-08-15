@@ -1,6 +1,6 @@
 import React from "react";
-import HomeHeader from "../components/headers/HomeHeader";
 import Banner from "../components/productList/Banner";
+import HomeHeader from "../components/Header";
 
 export default function ProductList() {
   return (

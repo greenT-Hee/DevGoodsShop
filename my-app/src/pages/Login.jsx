@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import AxiosInstance from "../Axios";
 import { Link } from "react-router-dom";
+import { setCookies } from "../Cookie";
 import { useNavigate } from "react-router-dom";
 
 const LoginSection = styled.section`
@@ -101,8 +102,13 @@ const Login = () => {
         password: password,
         login_type: "BUYER",
       });
+
       if (response.status === 200) {
-        // successLogin();
+        setCookies("refreshToken", response.data.token, {
+          path: "/",
+          sameSite: "strict",
+        });
+        successLogin();
       }
       console.log(response);
     } catch {
@@ -111,10 +117,10 @@ const Login = () => {
   };
 
   //로그인 성공하면 productListpage로 이동
-  // const navigate = useNavigate();
-  // const successLogin = () => {
-  //   // navigate("/productList");
-  // };
+  const navigate = useNavigate();
+  const successLogin = () => {
+    navigate("/productList");
+  };
 
   return (
     <LoginSection>

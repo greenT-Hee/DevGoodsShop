@@ -1,11 +1,10 @@
 import React from "react";
 import Banner from "../components/productList/Banner";
-import HomeHeader from "../components/Header";
-
+import { ProductListHeader } from "../components/Header";
 export default function ProductList() {
   return (
     <>
-      <HomeHeader />
+      <ProductListHeader />
       <Banner />
     </>
   );

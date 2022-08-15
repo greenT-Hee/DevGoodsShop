@@ -10,6 +10,6 @@ export const getCookie = (name) => {
 };
 
 export const logout = (name) => {
-  console.log("logout 성공!!");
+  console.log("logout 성공!!", new Date());
   return cookies.remove(name);
 };

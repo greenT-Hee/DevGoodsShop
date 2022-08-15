@@ -2,6 +2,7 @@ import styled from "styled-components";
 import mainLogo from "../assets/Logo-hodu.png";
 import cartLogo from "../assets/icon-shopping-cart.svg";
 import userImg from "../assets/icon-user.svg";
+import myPageIcon from "../assets/icon-user.svg";
 import { Link } from "react-router-dom";
 
 const HeaderSection = styled.header`
@@ -33,10 +34,14 @@ const Search = styled.input`
   margin-right: 555px;
 `;
 
-const WrapIcon = styled.div`
+const WrapIcon = styled.ul`
   display: flex;
   gap: 26px;
-  width: 118px;
+`;
+
+const WrapIconLi = styled.li`
+  text-decoration: none;
+  text-align: center;
 `;
 
 const HeaderIcon = styled.img`
@@ -50,7 +55,7 @@ const HeaderText = styled.p`
   color: #767676;
 `;
 
-const HomeHeader = () => {
+export const HomeHeader = () => {
   return (
     <HeaderSection>
       <WrapHeader>
@@ -59,18 +64,47 @@ const HomeHeader = () => {
         </Link>
         <Search type="text" />
         <WrapIcon>
-          <a href="#none" style={{ textDecoration: "none" }}>
-            <HeaderIcon src={cartLogo} alt="장바구니" />
-            <HeaderText>장바구니</HeaderText>
-          </a>
-          <Link to="/login" style={{ textDecoration: "none" }}>
-            <HeaderIcon src={userImg} alt="로그인" />
-            <HeaderText>로그인</HeaderText>
-          </Link>
+          <li>
+            <a href="#none">
+              <HeaderIcon src={cartLogo} alt="장바구니" />
+              <HeaderText>장바구니</HeaderText>
+            </a>
+          </li>
+          <li>
+            <Link to="/login">
+              <HeaderIcon src={userImg} alt="로그인" />
+              <HeaderText>로그인</HeaderText>
+            </Link>
+          </li>
         </WrapIcon>
       </WrapHeader>
     </HeaderSection>
   );
 };
 
-export default HomeHeader;
+export const ProductListHeader = () => {
+  return (
+    <HeaderSection>
+      <WrapHeader>
+        <Link to="/">
+          <MainLogo src={mainLogo} alt="홈페이지 로고" />
+        </Link>
+        <Search type="text" />
+        <WrapIcon>
+          <WrapIconLi>
+            <a href="#none">
+              <HeaderIcon src={cartLogo} alt="장바구니" />
+              <HeaderText>장바구니</HeaderText>
+            </a>
+          </WrapIconLi>
+          <WrapIconLi>
+            <a href="#none">
+              <HeaderIcon src={userImg} alt="마이페이지" />
+              <HeaderText>마이페이지</HeaderText>
+            </a>
+          </WrapIconLi>
+        </WrapIcon>
+      </WrapHeader>
+    </HeaderSection>
+  );
+};

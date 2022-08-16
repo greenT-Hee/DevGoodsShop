@@ -1,5 +1,4 @@
 export default function ProductItem({
-  key,
   productName,
   image,
   price,
@@ -7,7 +6,7 @@ export default function ProductItem({
 }) {
   return (
     <li>
-      <img src={image} alt="상품" />
+      <img src={image} alt="상품 사진" />
       <span>{productInfo}</span>
       <p>{productName}</p>
       <strong>{price}</strong>

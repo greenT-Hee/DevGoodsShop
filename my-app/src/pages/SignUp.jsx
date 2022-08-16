@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { Navigate, Router, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 import mainLogo from "../assets/Logo-hodu.png";
 import AxiosInstance from "../Axios";

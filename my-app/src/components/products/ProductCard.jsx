@@ -1,7 +1,16 @@
 import { useEffect, useState } from "react";
 import AxiosInstance from "../../Axios";
 import ProductItem from "./productItem";
-// import styled from "styled-components";
+import styled from "styled-components";
+
+const CardUl = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  width: 1280px;
+  box-sizing: border-box;
+  gap: 70px;
+  margin: 80px auto;
+`;
 
 export default function ProductCard() {
   const [productData, setProductData] = useState([]);
@@ -22,7 +31,7 @@ export default function ProductCard() {
 
   console.log(productData);
   return (
-    <ul>
+    <CardUl>
       {productData.map((item) => {
         return (
           <ProductItem
@@ -30,10 +39,10 @@ export default function ProductCard() {
             productName={item.product_name}
             image={item.image}
             price={item.price}
-            productInfo={item.products_info}
+            productInfo={item.product_info}
           />
         );
       })}
-    </ul>
+    </CardUl>
   );
 }

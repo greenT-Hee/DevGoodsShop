@@ -1,9 +1,8 @@
 import React from "react";
 import Banner from "../components/Banner";
+import Footer from "../components/Footer";
 import { ProductListHeader } from "../components/Header";
 import ProductCard from "../components/products/ProductCard";
-import AxiosInstance from "../Axios";
-import { useState, useEffect } from "react";
 
 export default function ProductList() {
   return (
@@ -11,6 +10,7 @@ export default function ProductList() {
       <ProductListHeader />
       <Banner />
       <ProductCard />
+      <Footer />
     </>
   );
 }

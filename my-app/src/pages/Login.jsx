@@ -103,7 +103,7 @@ const Login = () => {
         login_type: "BUYER",
       });
 
-      if (response.status === 200) {
+      if (response.data.token) {
         setCookies("refreshToken", response.data.token, {
           path: "/hodu",
           sameSite: "strict",

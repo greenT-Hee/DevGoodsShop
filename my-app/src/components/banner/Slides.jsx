@@ -77,7 +77,7 @@ export default function Slides({ slides }) {
     z-index: 5;
     top: 0;
   `;
-
+  // /
   const goPrev = () => {
     const isFirstIndex = currentIndex === 0;
     const newIndex = isFirstIndex ? slides.length - 1 : currentIndex - 1;

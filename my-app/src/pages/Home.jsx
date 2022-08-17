@@ -1,5 +1,5 @@
 import { HomeHeader } from "../components/Header";
-import Banner from "../components/Banner";
+import Banner from "../components/banner/Banner";
 import ProductCard from "../components/products/ProductCard";
 import Footer from "../components/Footer";
 

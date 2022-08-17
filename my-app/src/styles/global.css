@@ -9,3 +9,9 @@
 body {
   font-family: "SpoqaHanSansNeo-Regular";
 }
+
+@media screen and (max-width: 950px) {
+  body {
+    width: 950px;
+  }
+}

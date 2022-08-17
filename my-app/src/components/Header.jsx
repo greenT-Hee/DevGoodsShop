@@ -4,17 +4,18 @@ import cartLogo from "../assets/icon-shopping-cart.svg";
 import userImg from "../assets/icon-user.svg";
 import { Link } from "react-router-dom";
 
-const HeaderSection = styled.header`
-  width: 100%;
-`;
-
 const WrapHeader = styled.div`
   display: flex;
-  align-items: center;
   width: 1280px;
+  justify-content: space-between;
   box-sizing: border-box;
   margin: 0 auto;
   padding: 22px;
+`;
+
+const LogoWrapDiv = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const MainLogo = styled.img`
@@ -30,7 +31,6 @@ const Search = styled.input`
   border: 2px solid #21bf48;
   border-radius: 50px;
   padding: 13px 22px;
-  margin-right: 555px;
 `;
 
 const WrapIcon = styled.ul`
@@ -52,16 +52,19 @@ const HeaderText = styled.p`
   font-weight: 400;
   font-size: 12px;
   color: #767676;
+  width: 56px;
 `;
 
 export const HomeHeader = () => {
   return (
-    <HeaderSection>
+    <header>
       <WrapHeader>
-        <Link to="/">
-          <MainLogo src={mainLogo} alt="홈페이지 로고" />
-        </Link>
-        <Search type="text" />
+        <LogoWrapDiv>
+          <Link to="/">
+            <MainLogo src={mainLogo} alt="홈페이지 로고" />
+          </Link>
+          <Search type="text" />
+        </LogoWrapDiv>
         <WrapIcon>
           <li>
             <a href="#none">
@@ -77,18 +80,20 @@ export const HomeHeader = () => {
           </li>
         </WrapIcon>
       </WrapHeader>
-    </HeaderSection>
+    </header>
   );
 };
 
 export const ProductListHeader = () => {
   return (
-    <HeaderSection>
+    <header>
       <WrapHeader>
-        <Link to="/">
-          <MainLogo src={mainLogo} alt="홈페이지 로고" />
-        </Link>
-        <Search type="text" />
+        <LogoWrapDiv>
+          <Link to="/">
+            <MainLogo src={mainLogo} alt="홈페이지 로고" />
+          </Link>
+          <Search type="text" />
+        </LogoWrapDiv>
         <WrapIcon>
           <WrapIconLi>
             <a href="#none">
@@ -104,6 +109,6 @@ export const ProductListHeader = () => {
           </WrapIconLi>
         </WrapIcon>
       </WrapHeader>
-    </HeaderSection>
+    </header>
   );
 };

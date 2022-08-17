@@ -11,6 +11,8 @@ const FooterDiv1 = styled.div`
   width: 1280px;
   margin: 60px auto 30px;
   overflow: hidden;
+  display: flex;
+  justify-content: space-between;
 `;
 const FooterDiv2 = styled.div`
   width: 1280px;
@@ -24,8 +26,8 @@ const FooterUl = styled.ul`
 
 const FooterLi = styled.li`
   display: inline-block;
-  width: fit-content;
   font-size: 14px;
+  line-height: 2.5;
   margin-right: 32px;
 `;
 
@@ -91,7 +93,7 @@ export default function Footer() {
         </FooterUl>
         <SpriteUl>
           <SpriteLi>
-            <SpriteA faceBook href="#none"></SpriteA>
+            <SpriteA faceBook href="#none"></SpriteA> 
           </SpriteLi>
           <SpriteLi>
             <SpriteA insta href="#none"></SpriteA>

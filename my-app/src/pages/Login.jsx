@@ -105,8 +105,8 @@ const Login = () => {
 
       if (response.data.token) {
         setCookies("refreshToken", response.data.token, {
-          path: "/hodu",
-          sameSite: "strict",
+          path: "/",
+          // sameSite: "strict",
         });
         successLogin();
       }
@@ -119,7 +119,7 @@ const Login = () => {
   //로그인 성공하면 productListpage로 이동
   const navigate = useNavigate();
   const successLogin = () => {
-    navigate("/hodu/productList");
+    navigate("/");
   };
 
   return (

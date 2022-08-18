@@ -2,7 +2,7 @@ import styled from "styled-components";
 import mainLogo from "../assets/Logo-hodu.png";
 import cartLogo from "../assets/icon-shopping-cart.svg";
 import userImg from "../assets/icon-user.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MyModal from "./MyModal";
 import { useState } from "react";
 
@@ -65,6 +65,11 @@ const HeaderText = styled.p`
 `;
 
 export const HomeHeader = () => {
+  const navigate = useNavigate();
+  const goLoginPage = () => {
+    navigate("./login");
+  };
+
   return (
     <Header>
       <WrapHeader>
@@ -76,16 +81,16 @@ export const HomeHeader = () => {
         </LogoWrapDiv>
         <WrapIcon>
           <li>
-            <a href="#">
+            <button>
               <HeaderIcon src={cartLogo} alt="장바구니" />
               <HeaderText>장바구니</HeaderText>
-            </a>
+            </button>
           </li>
           <li>
-            <Link to="/login">
+            <button onClick={goLoginPage}>
               <HeaderIcon src={userImg} alt="로그인" />
               <HeaderText>로그인</HeaderText>
-            </Link>
+            </button>
           </li>
         </WrapIcon>
       </WrapHeader>

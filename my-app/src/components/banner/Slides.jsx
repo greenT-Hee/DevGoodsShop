@@ -34,8 +34,8 @@ const ArrowUl = styled.ul`
 
 const ArrowLi = styled.li`
   width: 60px;
-  background-color: #e7e7e7;
-  opacity: 0.3;
+  background-color: #fff;
+  opacity: 0.2;
   border-radius: 5px;
 
   &:hover {
@@ -77,7 +77,7 @@ export default function Slides({ slides }) {
     z-index: 5;
     top: 0;
   `;
-  // /
+
   const goPrev = () => {
     const isFirstIndex = currentIndex === 0;
     const newIndex = isFirstIndex ? slides.length - 1 : currentIndex - 1;

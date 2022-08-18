@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import MyModal from "../MyModal";
 import Slides from "./Slides";
 
 const BannerSection = styled.section`
   width: 100%;
-  background-color: #f2f2f2;
+  margin-top: 2px;
 `;
 
 const Banner = () => {

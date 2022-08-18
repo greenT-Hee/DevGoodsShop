@@ -3,6 +3,14 @@ import mainLogo from "../assets/Logo-hodu.png";
 import cartLogo from "../assets/icon-shopping-cart.svg";
 import userImg from "../assets/icon-user.svg";
 import { Link } from "react-router-dom";
+import MyModal from "./MyModal";
+import { useState } from "react";
+
+const Header = styled.header`
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
+`;
 
 const WrapHeader = styled.div`
   display: flex;
@@ -35,6 +43,7 @@ const Search = styled.input`
 
 const WrapIcon = styled.ul`
   display: flex;
+  position: relative;
   gap: 26px;
 `;
 
@@ -45,7 +54,7 @@ const WrapIconLi = styled.li`
 
 const HeaderIcon = styled.img`
   width: 30px;
-  padding-left: 2px;
+  padding-bottom: 2px;
 `;
 
 const HeaderText = styled.p`
@@ -57,7 +66,7 @@ const HeaderText = styled.p`
 
 export const HomeHeader = () => {
   return (
-    <header>
+    <Header>
       <WrapHeader>
         <LogoWrapDiv>
           <Link to="/">
@@ -67,7 +76,7 @@ export const HomeHeader = () => {
         </LogoWrapDiv>
         <WrapIcon>
           <li>
-            <a href="#none">
+            <a href="#">
               <HeaderIcon src={cartLogo} alt="장바구니" />
               <HeaderText>장바구니</HeaderText>
             </a>
@@ -80,13 +89,22 @@ export const HomeHeader = () => {
           </li>
         </WrapIcon>
       </WrapHeader>
-    </header>
+    </Header>
   );
 };
 
 export const ProductListHeader = () => {
+  const [isModeal, setIsModal] = useState(false);
+  const handleModal = () => {
+    if (isModeal === true) {
+      setIsModal(false);
+    } else {
+      setIsModal(true);
+    }
+  };
+
   return (
-    <header>
+    <Header>
       <WrapHeader>
         <LogoWrapDiv>
           <Link to="/">
@@ -96,19 +114,20 @@ export const ProductListHeader = () => {
         </LogoWrapDiv>
         <WrapIcon>
           <WrapIconLi>
-            <a href="#none">
+            <button href="#none">
               <HeaderIcon src={cartLogo} alt="장바구니" />
               <HeaderText>장바구니</HeaderText>
-            </a>
+            </button>
           </WrapIconLi>
           <WrapIconLi>
-            <a href="#none">
+            <button onClick={handleModal}>
               <HeaderIcon src={userImg} alt="마이페이지" />
               <HeaderText>마이페이지</HeaderText>
-            </a>
+            </button>
           </WrapIconLi>
+          {isModeal && <MyModal />}
         </WrapIcon>
       </WrapHeader>
-    </header>
+    </Header>
   );
 };

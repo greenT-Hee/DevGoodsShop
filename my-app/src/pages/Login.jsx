@@ -106,7 +106,7 @@ const Login = () => {
       if (response.data.token) {
         setCookies("refreshToken", response.data.token, {
           path: "/",
-          // sameSite: "strict",
+          sameSite: "strict",
         });
         successLogin();
       }

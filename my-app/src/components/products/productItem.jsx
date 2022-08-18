@@ -6,7 +6,7 @@ const CardLi = styled.li`
   border-radius: 10px;
 `;
 
-const ProductImgWrap = styled.div`
+const ProductImgWrap = styled.button`
   width: 380px;
   height: 380px;
   border: 1px solid #c4c4c4;

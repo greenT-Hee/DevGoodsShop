@@ -15,3 +15,7 @@ body {
     width: 950px;
   }
 }
+
+a {
+  text-decoration: none;
+}

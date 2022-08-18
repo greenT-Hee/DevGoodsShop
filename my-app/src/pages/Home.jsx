@@ -8,26 +8,16 @@ import MyModal from "../components/MyModal";
 
 const Home = () => {
   const isCookie = getCookie("refreshToken");
-  console.log(isCookie);
-  if (isCookie === undefined) {
-    return (
-      <>
-        <HomeHeader />
-        <Banner />
-        <ProductCard />
-        <Footer />
-      </>
-    );
-  } else {
-    return (
-      <>
-        <ProductListHeader />
-        <Banner />
-        <ProductCard />
-        <Footer />
-      </>
-    );
-  }
+  const Header =
+    isCookie === undefined ? <HomeHeader /> : <ProductListHeader />;
+  return (
+    <>
+      {Header}
+      <Banner />
+      <ProductCard />
+      <Footer />
+    </>
+  );
 };
 
 export default Home;

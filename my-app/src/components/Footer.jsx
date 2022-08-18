@@ -87,13 +87,13 @@ export default function Footer() {
     <FooterSection>
       <FooterDiv1>
         <FooterUl>
-          {contentLi.map((item) => {
-            return <FooterLi>{item}</FooterLi>;
+          {contentLi.map((item, index) => {
+            return <FooterLi key={index}>{item}</FooterLi>;
           })}
         </FooterUl>
         <SpriteUl>
           <SpriteLi>
-            <SpriteA faceBook href="#none"></SpriteA> 
+            <SpriteA faceBook href="#none"></SpriteA>
           </SpriteLi>
           <SpriteLi>
             <SpriteA insta href="#none"></SpriteA>
@@ -106,8 +106,8 @@ export default function Footer() {
       <FooterDiv2>
         <FooterDl>
           <FooterDt>(주) DEV VILLIAGE</FooterDt>
-          {contentDd.map((item) => {
-            return <FooterDd>{item}</FooterDd>;
+          {contentDd.map((item, index) => {
+            return <FooterDd key={index}>{item}</FooterDd>;
           })}
         </FooterDl>
       </FooterDiv2>

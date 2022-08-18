@@ -4,7 +4,7 @@ import "../src/styles/global.css";
 import Home from "../src/pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-import ProductList from "./pages/ProductList";
+import ProductDetail from "./pages/ProductDetail";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signUp" element={<SignUp />} />
-        <Route exact path="/productList" element={<ProductList />} />
+        <Route exact path="/productDetail/:id" element={<ProductDetail />} />
       </Routes>
     </BrowserRouter>
   );

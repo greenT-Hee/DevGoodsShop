@@ -29,13 +29,13 @@ export default function ProductCard() {
     getProductList();
   }, []);
 
-  console.log(productData);
   return (
     <CardUl>
-      {productData.map((item) => {
+      {productData.map((item, index) => {
         return (
           <ProductItem
-            key={item.product_id}
+            key={index}
+            productId={item.product_id}
             productName={item.product_name}
             image={item.image}
             price={item.price}

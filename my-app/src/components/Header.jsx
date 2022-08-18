@@ -67,7 +67,7 @@ const HeaderText = styled.p`
 export const HomeHeader = () => {
   const navigate = useNavigate();
   const goLoginPage = () => {
-    navigate("./login");
+    navigate("/login");
   };
 
   return (

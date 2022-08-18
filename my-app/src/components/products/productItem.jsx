@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const CardLi = styled.li`
   width: 380px;
@@ -42,14 +43,20 @@ const ProductPriceSpan = styled.span`
 `;
 
 export default function ProductItem({
+  productId,
   productName,
   image,
   price,
   productInfo,
 }) {
+  const nav = useNavigate();
+  const goDetailPage = () => {
+    nav(`/productDetail/${productId}`);
+  };
+
   return (
     <CardLi>
-      <ProductImgWrap>
+      <ProductImgWrap onClick={goDetailPage}>
         <ProdcuctImg src={image} alt="상품 사진" />
       </ProductImgWrap>
       <ProductInfoSpan>{productInfo}</ProductInfoSpan>

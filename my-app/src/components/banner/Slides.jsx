@@ -10,36 +10,23 @@ const SlideWrpaDiv = styled.div`
   overflow: hidden;
 `;
 
-const ArrowUl = styled.ul`
-  display: flex;
-  position: absolute;
-  justify-content: space-between;
-  gap: 1700px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 0 56px;
-  z-index: 10;
-
-  @media screen and (max-width: 1600px) {
-    gap: 1200px;
-  }
-  @media screen and (max-width: 1400px) {
-    gap: 1000px;
-  }
-  @media screen and (max-width: 1200px) {
-    gap: 800px;
-  }
-`;
+const SlideUl = styled.ul``;
 
 const ArrowLi = styled.li`
+  position: absolute;
   width: 60px;
+  top: 50%;
+  transform: translate(0, -50%);
+  z-index: 10;
   background-color: #fff;
-  opacity: 0.2;
-  border-radius: 5px;
+  opacity: 0.1;
+  border-radius: 10px;
+
+  left: ${(props) => (props.left ? "55px" : "")};
+  right: ${(props) => (props.right ? "55px" : "")};
 
   &:hover {
-    opacity: 0.6;
+    opacity: 0.4;
   }
 `;
 
@@ -54,7 +41,7 @@ const DotsContainerStyle = styled.div`
 `;
 
 const DotsStyle = styled.div`
-  font-size: 14px;
+  font-size: 10px;
   cursor: pointer;
   color: #767676;
 
@@ -97,8 +84,8 @@ export default function Slides({ slides }) {
   return (
     <SlideWrpaDiv>
       {/* arrow 버튼 */}
-      <ArrowUl>
-        <ArrowLi>
+      <SlideUl>
+        <ArrowLi left>
           <button type="button" onClick={goPrev}>
             <img src={leftArrow} alt="" />
           </button>
@@ -108,8 +95,8 @@ export default function Slides({ slides }) {
             <img src={rightArrow} alt="" />
           </button>
         </ArrowLi>
-      </ArrowUl>
-      {/* 슬라이트 */}
+      </SlideUl>
+      {/* 사진 */}
       <SlidesDiv></SlidesDiv>
       {/*  */}
       <DotsContainerStyle>

@@ -11,5 +11,6 @@ export const getCookie = (name) => {
 
 export const logout = (name) => {
   console.log("logout 성공!!", new Date());
+  window.location.reload();
   return cookies.remove(name);
 };

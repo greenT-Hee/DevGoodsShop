@@ -55,7 +55,6 @@ const ModalArrowDiv = styled.div`
 export default function MyModal() {
   const handleLogout = () => {
     logout("refreshToken");
-    window.location.reload();
   };
   return (
     <>

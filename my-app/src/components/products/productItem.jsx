@@ -52,6 +52,7 @@ export default function ProductItem({
   const nav = useNavigate();
   const goDetailPage = () => {
     nav(`/productDetail/${productId}`);
+    localStorage.setItem("id", productId);
   };
 
   return (
@@ -63,8 +64,8 @@ export default function ProductItem({
       <ProductNameSpan>{productName}</ProductNameSpan>
       <ProductPriceStrong>
         {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+        <ProductPriceSpan>원</ProductPriceSpan>
       </ProductPriceStrong>
-      <ProductPriceSpan>원</ProductPriceSpan>
     </CardLi>
   );
 }

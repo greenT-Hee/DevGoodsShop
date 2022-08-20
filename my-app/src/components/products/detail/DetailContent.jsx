@@ -40,42 +40,6 @@ const DeliverySpan = styled.p`
   margin: 138px 0 52px;
 `;
 
-const WrapOrderNumDiv = styled.div`
-  /* margin-top: 178px; */
-  width: 630px;
-`;
-
-const WrapCostDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 78px;
-`;
-
-const TotalP = styled.p`
-  font-size: 18px;
-`;
-
-const TotalSpan = styled.span`
-  font-size: 18px;
-  color: #767676;
-`;
-
-const TotalNumberSpan = styled.span`
-  color: #21bf48;
-`;
-
-const TotalNumberStrong = styled.strong`
-  color: #21bf48;
-  font-weight: 700;
-  font-size: 36px;
-  margin-left: 12px;
-`;
-
-const UnitSpan = styled.span`
-  font-size: 18px;
-`;
-
 export default function DetailContent({
   image,
   price,
@@ -96,20 +60,7 @@ export default function DetailContent({
         </ProductPriceStrong>
         {/* 주문 수량 */}
         <DeliverySpan>택배배송/ 무료배송</DeliverySpan>
-        <WrapOrderNumDiv>
-          <OrderNum />
-        </WrapOrderNumDiv>
-        <WrapCostDiv>
-          <TotalP>총 상품 금액</TotalP>
-          <div>
-            <TotalSpan>
-              총 수량 <TotalNumberSpan>1</TotalNumberSpan>개 |{" "}
-            </TotalSpan>
-            <TotalNumberStrong>
-              17,500 <UnitSpan> 원</UnitSpan>
-            </TotalNumberStrong>
-          </div>
-        </WrapCostDiv>
+        <OrderNum price={price} />
       </div>
     </ProductDetailArticle>
   );

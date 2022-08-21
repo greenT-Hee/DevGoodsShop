@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import OrderNum from "./OrderNum";
+import OrderProduct from "./OrderProduct";
 
 const ProductDetailArticle = styled.article`
   display: flex;
@@ -60,7 +60,7 @@ export default function DetailContent({
         </ProductPriceStrong>
         {/* 주문 수량 */}
         <DeliverySpan>택배배송/ 무료배송</DeliverySpan>
-        <OrderNum price={price} />
+        <OrderProduct price={price} />
       </div>
     </ProductDetailArticle>
   );

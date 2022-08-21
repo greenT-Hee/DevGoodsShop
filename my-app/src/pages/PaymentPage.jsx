@@ -1,7 +1,7 @@
 import { HomeHeader } from "../components/Header";
 import { ProductListHeader } from "../components/Header";
 import { getCookie } from "../Cookie";
-import BuyingList from "../components/payment/BuyingList";
+import PayingList from "../components/payment/PayingList";
 
 export default function ProductDetail() {
   const isCookie = getCookie("refreshToken");
@@ -10,7 +10,7 @@ export default function ProductDetail() {
   return (
     <>
       {Header}
-      <BuyingList />
+      <PayingList />
     </>
   );
 }

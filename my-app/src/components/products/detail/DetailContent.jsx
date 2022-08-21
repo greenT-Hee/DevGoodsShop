@@ -60,7 +60,7 @@ export default function DetailContent({
         </ProductPriceStrong>
         {/* 주문 수량 */}
         <DeliverySpan>택배배송/ 무료배송</DeliverySpan>
-        <OrderProduct price={price} />
+        <OrderProduct price={price} productId={productId} />
       </div>
     </ProductDetailArticle>
   );

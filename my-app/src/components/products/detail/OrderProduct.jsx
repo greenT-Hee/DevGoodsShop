@@ -3,9 +3,9 @@ import plus from "../../../assets/icon-plus-line.svg";
 import minus from "../../../assets/icon-minus-line.svg";
 import { useState } from "react";
 import CalulatePrice from "./CalulatePrice";
+import OrderButtons from "./OrderButtons";
 
 const WrapOrderNumDiv = styled.div`
-  /* margin-top: 178px; */
   width: 630px;
 `;
 
@@ -47,7 +47,7 @@ const OrderNumLi = styled.li`
   border-right: ${(props) => (props.middle ? "1px solid #c4c4c4" : "")};
 `;
 
-export default function OrderNum({ price }) {
+export default function OrderNum({ price, productId }) {
   const [orderNum, setOrderNum] = useState(1);
 
   const minusOrder = () => {
@@ -81,6 +81,8 @@ export default function OrderNum({ price }) {
       </WrapOrderNumDiv>
       {/* 총 수량, 총 가격 */}
       <CalulatePrice orderNum={orderNum} price={price} />
+      {/* 구매 버튼 */}
+      <OrderButtons productId={productId} orderNum={orderNum} />
     </>
   );
 }

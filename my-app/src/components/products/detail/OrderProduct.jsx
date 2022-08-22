@@ -47,7 +47,13 @@ const OrderNumLi = styled.li`
   border-right: ${(props) => (props.middle ? "1px solid #c4c4c4" : "")};
 `;
 
-export default function OrderNum({ price, productId }) {
+export default function OrderNum({
+  price,
+  productId,
+  image,
+  productName,
+  productInfo,
+}) {
   const [orderNum, setOrderNum] = useState(1);
 
   const minusOrder = () => {
@@ -82,7 +88,14 @@ export default function OrderNum({ price, productId }) {
       {/* 총 수량, 총 가격 */}
       <CalulatePrice orderNum={orderNum} price={price} />
       {/* 구매 버튼 */}
-      <OrderButtons productId={productId} orderNum={orderNum} />
+      <OrderButtons
+        productId={productId}
+        orderNum={orderNum}
+        image={image}
+        price={price}
+        productName={productName}
+        productInfo={productInfo}
+      />
     </>
   );
 }

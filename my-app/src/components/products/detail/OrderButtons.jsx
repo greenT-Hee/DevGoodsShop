@@ -26,10 +26,26 @@ const GoCartBtn = styled.button`
   background-color: #767676;
 `;
 
-export default function OrderButtons({ productId, orderNum }) {
+export default function OrderButtons({
+  productId,
+  orderNum,
+  image,
+  price,
+  productName,
+  productInfo,
+}) {
   const nav = useNavigate();
   const GoPaymentPage = () => {
-    nav("/payment", { state: { productId: productId, orderNum: orderNum } });
+    nav("/payment", {
+      state: {
+        productId: productId,
+        orderNum: orderNum,
+        price: price,
+        image: image,
+        productName: productName,
+        productInfo: productInfo,
+      },
+    });
   };
 
   return (

@@ -7,16 +7,14 @@ import MyModal from "./MyModal";
 import { useState } from "react";
 
 const Header = styled.header`
-  width: 100%;
   background: #ffffff;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
 `;
 
 const WrapHeader = styled.div`
-  display: flex;
   width: 1280px;
+  display: flex;
   justify-content: space-between;
-  box-sizing: border-box;
   margin: 0 auto;
   padding: 22px;
 `;

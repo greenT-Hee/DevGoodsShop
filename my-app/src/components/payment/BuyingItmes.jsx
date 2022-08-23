@@ -56,13 +56,12 @@ export default function BuyingItmes() {
   const location = useLocation();
   console.log(location.state);
 
-  const productId = location.state.prouctId;
   const orderNum = location.state.orderNum;
   const image = location.state.image;
   const price = location.state.price;
   const productName = location.state.productName;
   const productInfo = location.state.productInfo;
-  let totalCost = parseInt(price * orderNum);
+  const totalCost = parseInt(price * orderNum);
   return (
     <PayListLi>
       <WrapItemsDiv>

@@ -1,4 +1,7 @@
+import { useState } from "react";
+import { useLocation } from "react-router";
 import styled from "styled-components";
+import AxiosInstance from "../../Axios";
 
 const ShippingSection = styled.section`
   width: 1280px;
@@ -70,13 +73,69 @@ const Label2 = styled.label`
 `;
 
 export default function Shipping() {
+  const location = useLocation();
+  const productId = location.state.productId;
+  const orderNum = location.state.orderNum;
+  const price = location.state.price;
+  const totalPrice = parseInt(orderNum * price);
+
+  const [receiver, setReceiver] = useState("");
+  const [phoneNum, setPhoneNum] = useState("");
+  const [address, setAddress] = useState("");
+  const [message, setMessage] = useState("");
+  const [payment, setPayment] = useState("");
+  const handleReceiver = (e) => {
+    setReceiver(e.target.value);
+  };
+
+  const handlePhoneNum = (e) => {
+    setPhoneNum(e.target.value);
+  };
+  const handleAddress = (e) => {
+    setAddress(e.target.value);
+  };
+  const handleMessage = (e) => {
+    setMessage(e.target.value);
+  };
+  const handlePayment = (e) => {
+    setPayment(e.target.value);
+  };
+
+  console.log(orderNum, productId);
+  console.log(totalPrice);
+  console.log(receiver, phoneNum, address, message, payment);
+  const order = async () => {
+    try {
+      const response = await AxiosInstance.post("order/", {
+        product_id: productId,
+        quantity: orderNum,
+        order_kind: "direct_order",
+
+        reciever: receiver,
+        reciever_phone_number: phoneNum,
+        address: address,
+        address_message: message,
+        payment_method: payment,
+        total_price: totalPrice,
+      });
+      console.log(response);
+    } catch {
+      console.error("error");
+    }
+  };
+
+  const submitOrder = (e) => {
+    e.preventDefault();
+    order();
+  };
+
   return (
     <>
       <ShippingSection>
         <H2>배송 정보</H2>
         <InfoSection>
           <InfoH3>주문자 정보</InfoH3>
-          <form action="">
+          <form>
             <WrapInputDiv>
               <Label1 first htmlFor="username">
                 이름
@@ -96,26 +155,26 @@ export default function Shipping() {
 
         <InfoSection>
           <InfoH3>배송지 정보</InfoH3>
-          <form action="">
+          <form onSubmit={submitOrder}>
             <WrapInputDiv>
               <Label1 htmlFor="receiver">수령인</Label1>
-              <Input type="text" id="receiver" />
+              <Input type="text" id="receiver" onChange={handleReceiver} />
             </WrapInputDiv>
             <WrapInputDiv>
               <Label1 htmlFor="yourPhoneNum">휴대폰</Label1>
-              <Input type="text" id="yourPhoneNum" />
+              <Input type="text" id="yourPhoneNum" onChange={handlePhoneNum} />
             </WrapInputDiv>
             <WrapInputDiv>
               <Label1 last htmlFor="location">
                 배송 주소
               </Label1>
-              <Input type="text" id="location" />
+              <Input type="text" id="location" onChange={handleAddress} />
             </WrapInputDiv>
             <WrapInputDiv>
               <Label1 last htmlFor="message">
                 배송 메세지
               </Label1>
-              <Input type="text" id="message" />
+              <Input type="text" id="message" onChange={handleMessage} />
             </WrapInputDiv>
           </form>
         </InfoSection>
@@ -124,18 +183,52 @@ export default function Shipping() {
       <SelectPayWaySection>
         <PayWayLayoutDiv>
           <H2>결제 수단</H2>
-          <PayWayForm>
-            <input type="radio" id="credit" />
+          <PayWayForm onSubmit={submitOrder}>
+            <input
+              type="radio"
+              id="credit"
+              name="pay"
+              value="CARD"
+              onChange={handlePayment}
+              defaultChecked
+            />
             <Label2 htmlFor="credit">신용/체크카드</Label2>
-            <input type="radio" id="cash" />
+            <input
+              type="radio"
+              id="cash"
+              name="pay"
+              value="DEPOSIT"
+              onChange={handlePayment}
+            />
             <Label2 htmlFor="cash">무통장 입금</Label2>
-            <input type="radio" id="phonePay" />
+            <input
+              type="radio"
+              id="phonePay"
+              name="pay"
+              value="PHONE_PAYMENT"
+              onChange={handlePayment}
+            />
             <Label2 htmlFor="phonePay">휴대폰 결제</Label2>
-            <input type="radio" id="naverPay" />
+            <input
+              type="radio"
+              id="naverPay"
+              name="pay"
+              value="NAVERPAY"
+              onChange={handlePayment}
+            />
             <Label2 htmlFor="naverPay">네이버페이</Label2>
-            <input type="radio" id="kakaoPay" />
+            <input
+              type="radio"
+              id="kakaoPay"
+              name="pay"
+              value="KAKAOPAY "
+              onChange={handlePayment}
+            />
             <Label2 htmlFor="kakaoPay">카카오페이</Label2>
           </PayWayForm>
+          <form>
+            <button>결제하기</button>
+          </form>
         </PayWayLayoutDiv>
       </SelectPayWaySection>
     </>

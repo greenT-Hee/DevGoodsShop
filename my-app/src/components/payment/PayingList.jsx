@@ -51,7 +51,9 @@ export default function BuyingList() {
   const location = useLocation();
   const orderNum = location.state.orderNum;
   const price = location.state.price;
-  let totalCost = parseInt(price * orderNum);
+  const totalCost = parseInt(price * orderNum);
+
+  console.log(location.state);
   return (
     <PayingSection>
       <PayingH2>주문/결제하기</PayingH2>

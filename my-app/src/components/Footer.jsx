@@ -93,13 +93,13 @@ export default function Footer() {
         </FooterUl>
         <SpriteUl>
           <SpriteLi>
-            <SpriteA faceBook href="#none"></SpriteA>
+            <SpriteA faceBook href="https://www.facebook.com/"></SpriteA>
           </SpriteLi>
           <SpriteLi>
-            <SpriteA insta href="#none"></SpriteA>
+            <SpriteA insta href="https://www.instagram.com/"></SpriteA>
           </SpriteLi>
           <SpriteLi>
-            <SpriteA youtube href="#none"></SpriteA>
+            <SpriteA youtube href="https://www.youtube.com/"></SpriteA>
           </SpriteLi>
         </SpriteUl>
       </FooterDiv1>

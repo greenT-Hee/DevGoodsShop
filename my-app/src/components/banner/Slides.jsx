@@ -52,13 +52,19 @@ const DotsStyle = styled.div`
   }
 `;
 
+const ArrowImg = styled.img`
+  width: 100%;
+  height: 100%;
+`;
+
 export default function Slides({ slides }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-
   const SlidesDiv = styled.div`
     width: 100%;
     height: 100%;
-    background: url(${slides[currentIndex].url}) no-repeat center;
+    background: url(${slides[currentIndex].url});
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
     position: absolute;
     z-index: 5;
@@ -87,12 +93,12 @@ export default function Slides({ slides }) {
       <SlideUl>
         <ArrowLi left>
           <button type="button" onClick={goPrev}>
-            <img src={leftArrow} alt="" />
+            <ArrowImg src={leftArrow} alt="배너 사진 뒤로 가기 버튼" />
           </button>
         </ArrowLi>
         <ArrowLi right>
           <button type="button" onClick={goForward}>
-            <img src={rightArrow} alt="" />
+            <ArrowImg src={rightArrow} alt="배너 사진 앞으로 가기 버튼" />
           </button>
         </ArrowLi>
       </SlideUl>

@@ -9,14 +9,12 @@ import { useState } from "react";
 const Header = styled.header`
   background: #ffffff;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
+  padding: 22px 100px;
 `;
 
 const WrapHeader = styled.div`
-  width: 1280px;
   display: flex;
   justify-content: space-between;
-  margin: 0 auto;
-  padding: 22px;
 `;
 
 const LogoWrapDiv = styled.div`
@@ -30,7 +28,7 @@ const MainLogo = styled.img`
   padding: 0px 30px 0 0;
 `;
 
-const Search = styled.input`
+const SearchInput = styled.input`
   width: 400px;
   box-sizing: border-box;
   background: #ffffff;
@@ -52,6 +50,7 @@ const WrapIconLi = styled.li`
 
 const HeaderIcon = styled.img`
   width: 30px;
+  height: 32px;
   padding-bottom: 2px;
 `;
 
@@ -75,7 +74,10 @@ export const HomeHeader = () => {
           <Link to="/">
             <MainLogo src={mainLogo} alt="홈페이지 로고" />
           </Link>
-          <Search type="text" />
+          <label htmlFor="search" className="ir">
+            검색창
+          </label>
+          <SearchInput type="search" id="search" />
         </LogoWrapDiv>
         <WrapIcon>
           <li>
@@ -113,7 +115,14 @@ export const ProductListHeader = () => {
           <Link to="/">
             <MainLogo src={mainLogo} alt="홈페이지 로고" />
           </Link>
-          <Search type="text" />
+          <label htmlFor="search" className="ir">
+            검색창
+          </label>
+          <SearchInput
+            type="search"
+            id="search"
+            placeholder="검색어를 입력하세요"
+          />
         </LogoWrapDiv>
         <WrapIcon>
           <WrapIconLi>

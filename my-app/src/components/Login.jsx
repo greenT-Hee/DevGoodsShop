@@ -104,7 +104,7 @@ const Login = () => {
       });
 
       if (response.data.token) {
-        setCookies("refreshToken", "JWT " + response.data.token, {
+        setCookies("refreshToken", response.data.token, {
           path: "/",
           sameSite: "strict",
         });

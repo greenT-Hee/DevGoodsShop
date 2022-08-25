@@ -47,13 +47,13 @@ const TotalCostSpan = styled.span`
   padding-left: 10px;
 `;
 
-export default function BuyingList() {
+export default function PayingList() {
   const location = useLocation();
   const orderNum = location.state.orderNum;
   const price = location.state.price;
   const totalCost = parseInt(price * orderNum);
 
-  console.log(location.state);
+  console.log(orderNum, "payingList");
   return (
     <PayingSection>
       <PayingH2>주문/결제하기</PayingH2>

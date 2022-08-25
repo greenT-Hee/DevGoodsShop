@@ -104,7 +104,7 @@ const Login = () => {
       });
 
       if (response.data.token) {
-        setCookies("refreshToken", response.data.token, {
+        setCookies("refreshToken", "JWT " + response.data.token, {
           path: "/",
           sameSite: "strict",
         });
@@ -113,6 +113,7 @@ const Login = () => {
       console.log(response);
     } catch {
       console.error("Error");
+      alert("아이디와 비밀번호가 일치하지 않습니다.");
     }
   };
 

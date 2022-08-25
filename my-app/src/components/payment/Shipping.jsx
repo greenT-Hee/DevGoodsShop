@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation } from "react-router";
 import styled from "styled-components";
 import AxiosInstance from "../../Axios";
+import { getCookie } from "../../Cookie";
 
 const ShippingSection = styled.section`
   width: 1280px;
@@ -84,10 +85,10 @@ export default function Shipping() {
   const [address, setAddress] = useState("");
   const [message, setMessage] = useState("");
   const [payment, setPayment] = useState("");
+
   const handleReceiver = (e) => {
     setReceiver(e.target.value);
   };
-
   const handlePhoneNum = (e) => {
     setPhoneNum(e.target.value);
   };
@@ -101,23 +102,24 @@ export default function Shipping() {
     setPayment(e.target.value);
   };
 
-  console.log(orderNum, productId);
-  console.log(totalPrice);
+  const orderReq = {
+    product_id: productId,
+    quantity: orderNum,
+    order_kind: "direct_order", // 바로주문하기일 경우에는 direct_order여야 합니다.
+
+    reciever: receiver,
+    reciever_phone_number: phoneNum,
+    address: address,
+    address_message: message,
+    payment_method: payment, //CARD, DEPOSIT, PHONE_PAYMENT, NAVERPAY, KAKAOPAY 중 하나 선택
+    total_price: totalPrice, // 총 금액(total_price)은 자동계산되나, 유효성검사를 위해 받아와야 합니다.
+  };
+
   console.log(receiver, phoneNum, address, message, payment);
+  console.log(productId, orderNum, price, totalPrice, "🎉location");
   const order = async () => {
     try {
-      const response = await AxiosInstance.post("order/", {
-        product_id: productId,
-        quantity: orderNum,
-        order_kind: "direct_order",
-
-        reciever: receiver,
-        reciever_phone_number: phoneNum,
-        address: address,
-        address_message: message,
-        payment_method: payment,
-        total_price: totalPrice,
-      });
+      const response = await AxiosInstance.post("order/", orderReq);
       console.log(response);
     } catch {
       console.error("error");
@@ -158,23 +160,43 @@ export default function Shipping() {
           <form onSubmit={submitOrder}>
             <WrapInputDiv>
               <Label1 htmlFor="receiver">수령인</Label1>
-              <Input type="text" id="receiver" onChange={handleReceiver} />
+              <Input
+                type="text"
+                id="receiver"
+                onChange={handleReceiver}
+                required
+              />
             </WrapInputDiv>
             <WrapInputDiv>
               <Label1 htmlFor="yourPhoneNum">휴대폰</Label1>
-              <Input type="text" id="yourPhoneNum" onChange={handlePhoneNum} />
+              <Input
+                type="text"
+                id="yourPhoneNum"
+                onChange={handlePhoneNum}
+                required
+              />
             </WrapInputDiv>
             <WrapInputDiv>
               <Label1 last htmlFor="location">
                 배송 주소
               </Label1>
-              <Input type="text" id="location" onChange={handleAddress} />
+              <Input
+                type="text"
+                id="location"
+                onChange={handleAddress}
+                required
+              />
             </WrapInputDiv>
             <WrapInputDiv>
               <Label1 last htmlFor="message">
                 배송 메세지
               </Label1>
-              <Input type="text" id="message" onChange={handleMessage} />
+              <Input
+                type="text"
+                id="message"
+                onChange={handleMessage}
+                required
+              />
             </WrapInputDiv>
           </form>
         </InfoSection>
@@ -221,12 +243,12 @@ export default function Shipping() {
               type="radio"
               id="kakaoPay"
               name="pay"
-              value="KAKAOPAY "
+              value="KAKAOPAY"
               onChange={handlePayment}
             />
             <Label2 htmlFor="kakaoPay">카카오페이</Label2>
           </PayWayForm>
-          <form>
+          <form onSubmit={submitOrder}>
             <button>결제하기</button>
           </form>
         </PayWayLayoutDiv>

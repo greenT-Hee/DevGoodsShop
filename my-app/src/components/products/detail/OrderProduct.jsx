@@ -53,17 +53,18 @@ export default function OrderNum({
   image,
   productName,
   productInfo,
+  stock,
 }) {
-  const [orderNum, setOrderNum] = useState(1);
+  const [orderNum, setOrderNum] = useState(0);
 
   const minusOrder = () => {
-    if (orderNum > 1) {
+    if (orderNum > 0) {
       setOrderNum(parseInt(orderNum - 1));
     }
   };
 
   const plustOrder = () => {
-    setOrderNum(parseInt(orderNum + 1));
+    if (orderNum < stock) setOrderNum(parseInt(orderNum + 1));
   };
 
   return (

@@ -66,6 +66,7 @@ export default function DetailContent({
           image={image}
           productName={productName}
           productInfo={productInfo}
+          stock={stock}
         />
       </div>
     </ProductDetailArticle>

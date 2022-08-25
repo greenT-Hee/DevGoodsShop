@@ -7,7 +7,8 @@ const AxiosInstance = axios.create({
     ? "https://openmarket.weniv.co.kr/"
     : "http://13.209.150.154:8000/",
   headers: {
-    Authorization: `JWT ${cookie}`,
+    Authorization: cookie,
   },
+  withCredentials: true,
 });
 export default AxiosInstance;

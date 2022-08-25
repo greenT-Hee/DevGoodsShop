@@ -41,7 +41,7 @@ const DeliverySpan = styled.p`
 `;
 
 const SoldoutSpan = styled.span`
-  color: red;
+  color: #eb5757;
   font-size: 18px;
 `;
 

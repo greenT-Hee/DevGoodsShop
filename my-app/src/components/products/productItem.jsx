@@ -43,7 +43,7 @@ const ProductPriceSpan = styled.span`
 `;
 
 const SoldoutSpan = styled.span`
-  color: red;
+  color: #eb5757;
 `;
 
 export default function ProductItem({

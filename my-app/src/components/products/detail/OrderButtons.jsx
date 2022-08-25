@@ -8,6 +8,7 @@ const WrapBuyDiv = styled.div`
   margin-top: 22px;
   font-size: 18px;
   font-weight: 700;
+  float: right;
 `;
 
 const DirectBuyBtn = styled.button`
@@ -16,14 +17,6 @@ const DirectBuyBtn = styled.button`
   border-radius: 5px;
   color: #fff;
   background-color: #21bf48;
-`;
-
-const GoCartBtn = styled.button`
-  width: 200px;
-  height: 60px;
-  border-radius: 5px;
-  color: #fff;
-  background-color: #767676;
 `;
 
 export default function OrderButtons({
@@ -51,7 +44,6 @@ export default function OrderButtons({
   return (
     <WrapBuyDiv>
       <DirectBuyBtn onClick={GoPaymentPage}>바로 구매</DirectBuyBtn>
-      <GoCartBtn>장바구니</GoCartBtn>
     </WrapBuyDiv>
   );
 }

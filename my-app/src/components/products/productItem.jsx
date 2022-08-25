@@ -42,12 +42,17 @@ const ProductPriceSpan = styled.span`
   padding-left: 2px;
 `;
 
+const SoldoutSpan = styled.span`
+  color: red;
+`;
+
 export default function ProductItem({
   productId,
   productName,
   image,
   price,
   productInfo,
+  stock,
 }) {
   const nav = useNavigate();
   const goDetailPage = () => {
@@ -65,6 +70,7 @@ export default function ProductItem({
       <ProductPriceStrong>
         {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         <ProductPriceSpan>원</ProductPriceSpan>
+        {stock === 0 && <SoldoutSpan>{` (품절)`}</SoldoutSpan>}
       </ProductPriceStrong>
     </CardLi>
   );

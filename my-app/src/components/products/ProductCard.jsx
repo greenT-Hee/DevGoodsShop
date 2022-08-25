@@ -40,6 +40,7 @@ export default function ProductCard() {
             image={item.image}
             price={item.price}
             productInfo={item.product_info}
+            stock={item.stock}
           />
         );
       })}

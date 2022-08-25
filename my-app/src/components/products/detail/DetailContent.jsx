@@ -40,6 +40,11 @@ const DeliverySpan = styled.p`
   margin: 138px 0 52px;
 `;
 
+const SoldoutSpan = styled.span`
+  color: red;
+  font-size: 18px;
+`;
+
 export default function DetailContent({
   image,
   price,
@@ -57,6 +62,7 @@ export default function DetailContent({
         <ProductPriceStrong>
           {price}
           <ProductPriceSpan>원</ProductPriceSpan>
+          {stock === 0 && <SoldoutSpan>{` (품절)`}</SoldoutSpan>}
         </ProductPriceStrong>
         {/* 주문 수량 */}
         <DeliverySpan>택배배송/ 무료배송</DeliverySpan>

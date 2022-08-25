@@ -43,7 +43,7 @@ const LoginBtn = styled.button`
   font-weight: 700;
   font-size: 18px;
   border-radius: 5px;
-  background-color: #21bf48;
+  background-color: ${(props) => (props.disabled ? "#c4c4c4" : "#21bf48 ")};
   color: #fff;
 `;
 
@@ -149,7 +149,8 @@ const Login = () => {
             onChange={onChangePassword}
             required
           />
-          <LoginBtn>로그인</LoginBtn>
+          {(!username || !password) && <LoginBtn disabled>로그인</LoginBtn>}
+          {username && password && <LoginBtn>로그인</LoginBtn>}
         </form>
       </LoginDiv>
       <WrapLinkUl>

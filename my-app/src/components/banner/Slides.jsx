@@ -100,7 +100,7 @@ export default function Slides({ slides }) {
       <SlidesDiv></SlidesDiv>
       {/*  */}
       <DotsContainerStyle>
-        {slides.map((slide, slideIndex) => {
+        {slides.map((slides, slideIndex) => {
           return (
             <DotsStyle key={slideIndex} onClick={() => goToSlide(slideIndex)}>
               ●

@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
+import { getCookie } from "../../../Cookie";
 
 const WrapBuyDiv = styled.div`
   display: flex;
@@ -28,17 +29,20 @@ export default function OrderButtons({
   productInfo,
 }) {
   const nav = useNavigate();
+  const cookie = getCookie("refreshToken");
   const GoPaymentPage = () => {
-    nav("/payment", {
-      state: {
-        productId: productId,
-        orderNum: orderNum,
-        price: price,
-        image: image,
-        productName: productName,
-        productInfo: productInfo,
-      },
-    });
+    if (cookie) {
+      nav("/payment", {
+        state: {
+          productId: productId,
+          orderNum: orderNum,
+          price: price,
+          image: image,
+          productName: productName,
+          productInfo: productInfo,
+        },
+      });
+    }
   };
 
   return (

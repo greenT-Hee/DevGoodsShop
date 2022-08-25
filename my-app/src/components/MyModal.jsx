@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { logout } from "../Cookie";
 
@@ -53,7 +54,9 @@ const ModalArrowDiv = styled.div`
 `;
 
 export default function MyModal() {
+  const navigate = useNavigate();
   const handleLogout = () => {
+    navigate("/");
     logout("refreshToken");
   };
   return (

@@ -12,10 +12,10 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/login" element={<LoginPage />} />
-        <Route exact path="/signUp" element={<SignUpPage />} />
-        <Route exact path="/productDetail/:id" element={<ProductDetail />} />
-        <Route exact path="/payment" element={<PaymentPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signUp" element={<SignUpPage />} />
+        <Route path="/productDetail/:id" element={<ProductDetail />} />
+        <Route path="/payment" element={<PaymentPage />} />
       </Routes>
     </BrowserRouter>
   );

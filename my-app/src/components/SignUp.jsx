@@ -36,30 +36,6 @@ const FlexDiv1 = styled.div`
   gap: 12px;
 `;
 
-const JoinIdInput = styled.input`
-  box-sizing: border-box;
-  width: 346px;
-  height: 54px;
-  margin: 10px 0 12px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #c4c4c4;
-
-  &:active,
-  :focus {
-    border: 1px solid #21bf48;
-  }
-`;
-
-const CheckOverlapBtn = styled.button`
-  width: 122px;
-  height: 54px;
-  border-radius: 5px;
-
-  color: #fff;
-  background-color: #21bf48;
-`;
-
 const JoinInput = styled.input`
   box-sizing: border-box;
   width: 480px;
@@ -237,14 +213,13 @@ const SignUp = () => {
           <JoinLabel htmlFor="username">
             아이디
             <FlexDiv1>
-              <JoinIdInput
+              <JoinInput
                 id="username"
                 name="username"
                 type="text"
                 required
                 onChange={handleUsername}
               />
-              <CheckOverlapBtn>중복확인</CheckOverlapBtn>
             </FlexDiv1>
             {(username.length > 0 && !isUsername && (
               <ErrorMsg>{usernameMsg}</ErrorMsg>

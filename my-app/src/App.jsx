@@ -2,8 +2,8 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 import "../src/styles/reset.css";
 import "../src/styles/global.css";
 import Home from "../src/pages/Home";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
+import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
 import ProductDetail from "./pages/ProductDetail";
 import PaymentPage from "./pages/PaymentPage";
 
@@ -12,8 +12,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/login" element={<Login />} />
-        <Route exact path="/signUp" element={<SignUp />} />
+        <Route exact path="/login" element={<LoginPage />} />
+        <Route exact path="/signUp" element={<SignUpPage />} />
         <Route exact path="/productDetail/:id" element={<ProductDetail />} />
         <Route exact path="/payment" element={<PaymentPage />} />
       </Routes>

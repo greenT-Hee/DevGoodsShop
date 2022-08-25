@@ -55,7 +55,7 @@ export default function OrderNum({
   productInfo,
   stock,
 }) {
-  const [orderNum, setOrderNum] = useState(0);
+  const [orderNum, setOrderNum] = useState(1);
 
   const minusOrder = () => {
     if (orderNum > 0) {
@@ -96,6 +96,7 @@ export default function OrderNum({
         price={price}
         productName={productName}
         productInfo={productInfo}
+        stock={stock}
       />
     </>
   );

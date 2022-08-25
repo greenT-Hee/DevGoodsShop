@@ -17,7 +17,7 @@ const DirectBuyBtn = styled.button`
   height: 60px;
   border-radius: 5px;
   color: #fff;
-  background-color: #21bf48;
+  background-color: ${(props) => (props.soldout ? "#c4c4c4" : "#21bf48")};
 `;
 
 export default function OrderButtons({
@@ -27,6 +27,7 @@ export default function OrderButtons({
   price,
   productName,
   productInfo,
+  stock,
 }) {
   const nav = useNavigate();
   const cookie = getCookie("refreshToken");
@@ -42,12 +43,21 @@ export default function OrderButtons({
           productInfo: productInfo,
         },
       });
+    } else if (!cookie) {
+      alert("로그인이 필요합니다. 😥");
     }
   };
 
   return (
     <WrapBuyDiv>
-      <DirectBuyBtn onClick={GoPaymentPage}>바로 구매</DirectBuyBtn>
+      {stock > 0 && (
+        <DirectBuyBtn onClick={GoPaymentPage}>바로 구매</DirectBuyBtn>
+      )}
+      {stock === 0 && (
+        <DirectBuyBtn soldout disabled onClick={GoPaymentPage}>
+          품절
+        </DirectBuyBtn>
+      )}
     </WrapBuyDiv>
   );
 }

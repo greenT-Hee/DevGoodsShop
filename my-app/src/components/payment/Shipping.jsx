@@ -52,6 +52,7 @@ const Label1 = styled.label`
 const Input = styled.input`
   width: 334px;
   height: 40px;
+  border-radius: 5px;
   border: 1px solid #c4c4c4;
 `;
 
@@ -105,14 +106,14 @@ export default function Shipping() {
   const orderReq = {
     product_id: productId,
     quantity: orderNum,
-    order_kind: "direct_order", // 바로주문하기일 경우에는 direct_order여야 합니다.
+    order_kind: "direct_order",
 
     reciever: receiver,
     reciever_phone_number: phoneNum,
     address: address,
     address_message: message,
-    payment_method: payment, //CARD, DEPOSIT, PHONE_PAYMENT, NAVERPAY, KAKAOPAY 중 하나 선택
-    total_price: totalPrice, // 총 금액(total_price)은 자동계산되나, 유효성검사를 위해 받아와야 합니다.
+    payment_method: payment,
+    total_price: totalPrice,
   };
 
   console.log(receiver, phoneNum, address, message, payment);

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import styled from "styled-components";
 import mainLogo from "../assets/Logo-hodu.png";
 import AxiosInstance from "../Axios";
+import { Link } from "react-router-dom";
 
 const LoginSection = styled.section`
   margin: 80px auto;
@@ -210,7 +211,9 @@ const SignUp = () => {
   return (
     <LoginSection>
       <h2 className="ir">로그인 페이지</h2>
-      <MainLogo src={mainLogo} alt="메인로고" />
+      <Link to="/">
+        <MainLogo src={mainLogo} alt="메인로고" />
+      </Link>
       <LoginDiv>
         <form onSubmit={handleSubmitJoin}>
           <JoinLabel htmlFor="username">

@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 import mainLogo from "../assets/Logo-hodu.png";
@@ -62,7 +62,7 @@ const LoginBtn = styled.button`
   font-weight: 700;
   font-size: 18px;
   border-radius: 5px;
-  background-color: #c4c4c4;
+  background-color: ${(props) => (props.able ? "#21bf48" : "#c4c4c4")};
   color: #fff;
 `;
 
@@ -102,11 +102,11 @@ const SignUp = () => {
   const signUp = async () => {
     try {
       const response = await AxiosInstance.post("accounts/signup/", {
-        username: username, // 아이디
+        username: username,
         password: password1,
         password2: password2,
         phone_number: phoneNum,
-        name: name, // 이름
+        name: name,
       });
       console.log(response);
       if (response.status === 201) {
@@ -114,6 +114,9 @@ const SignUp = () => {
       }
     } catch {
       console.error("ERROR");
+      alert(
+        `이미 존재하는 DevSHOP 회원입니다.🙏 아이디 및 휴대폰 번호를 다시 확인해주세요`
+      );
     }
   };
 
@@ -273,7 +276,7 @@ const SignUp = () => {
               (name.length > 0 && isName && <SuccessMsg>{nameMsg}</SuccessMsg>)}
           </JoinLabel>
           <JoinLabel htmlFor="number">
-            휴대폰번호
+            휴대폰 번호
             <JoinInput
               id="phoneNum"
               name="phoneNum"
@@ -301,7 +304,12 @@ const SignUp = () => {
           <a href="#none">개인정보처리방침</a>에 대한 내용을 확인하였고
           동의합니다.
         </CheckBoxP>
-        <LoginBtn>가입하기</LoginBtn>
+        {((!username || !password1 || !password2 || !phoneNum || !name) && (
+          <LoginBtn disabled>가입하기</LoginBtn>
+        )) ||
+          (username && password1 && password2 && phoneNum && name && (
+            <LoginBtn able>가입하기</LoginBtn>
+          ))}
       </form>
     </LoginSection>
   );

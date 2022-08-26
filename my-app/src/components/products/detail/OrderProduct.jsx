@@ -60,7 +60,7 @@ export default function OrderNum({
   const [orderNum, setOrderNum] = useState(1);
 
   const minusOrder = () => {
-    if (orderNum > 0) {
+    if (stock) {
       setOrderNum(parseInt(orderNum - 1));
     }
   };

@@ -19,14 +19,14 @@ const ArrowLi = styled.li`
   transform: translate(0, -50%);
   z-index: 10;
   background-color: ${(props) => props.theme.color.white};
-  opacity: 0.1;
+  opacity: 0.3;
   border-radius: 10px;
 
   left: ${(props) => (props.left ? "55px" : "")};
   right: ${(props) => (props.right ? "55px" : "")};
 
   &:hover {
-    opacity: 0.4;
+    opacity: 0.6;
   }
 `;
 

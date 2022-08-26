@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import mainLogo from "../assets/Logo-hodu.png";
+import mainLogo from "../assets/mainLogo.png";
 import cartLogo from "../assets/icon-shopping-cart.svg";
 import userImg from "../assets/icon-user.svg";
 import { Link, useNavigate } from "react-router-dom";
@@ -23,8 +23,8 @@ const LogoWrapDiv = styled.div`
 `;
 
 const MainLogo = styled.img`
-  width: 124px;
-  height: 38px;
+  width: 180px;
+
   padding: 0px 30px 0 0;
 `;
 
@@ -51,7 +51,7 @@ const WrapIconLi = styled.li`
 const HeaderIcon = styled.img`
   width: 30px;
   height: 32px;
-  padding-bottom: 2px;
+  padding: 10px 0 2px;
 `;
 
 const HeaderText = styled.p`

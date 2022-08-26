@@ -1,4 +1,4 @@
-import mainLogo from "../assets/Logo-hodu.png";
+import mainLogo from "../assets/mainLogo.png";
 import styled from "styled-components";
 import { useState } from "react";
 import AxiosInstance from "../Axios";
@@ -12,14 +12,14 @@ const LoginSection = styled.section`
 `;
 
 const MainLogo = styled.img`
-  width: 238px;
+  width: 280px;
   margin-left: 156px;
 `;
 
 const LoginDiv = styled.div`
   width: 550px;
   height: 292px;
-  margin-top: 50px;
+  margin-top: 35px;
   padding: 35px;
   box-sizing: border-box;
   border-radius: 10px;

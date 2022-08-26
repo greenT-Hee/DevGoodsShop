@@ -15,7 +15,7 @@ const OrderNumUl = styled.ul`
   width: fit-content;
   height: 50px;
   border-radius: 5px;
-  border: 1px solid #c4c4c4;
+  border: 1px solid ${(props) => props.theme.color.gray2};
 
   &::after {
     position: absolute;
@@ -24,7 +24,7 @@ const OrderNumUl = styled.ul`
     height: 2px;
     top: -30px;
     left: 0;
-    background-color: #c4c4c4;
+    background-color: ${(props) => props.theme.color.gray2};
   }
 
   &::before {
@@ -34,7 +34,7 @@ const OrderNumUl = styled.ul`
     height: 2px;
     bottom: -30px;
     left: 0;
-    background-color: #c4c4c4;
+    background-color: ${(props) => props.theme.color.gray2};
   }
 `;
 
@@ -43,8 +43,10 @@ const OrderNumLi = styled.li`
   text-align: center;
   line-height: ${(props) => (props.middle ? "3.2" : "3.7")};
 
-  border-left: ${(props) => (props.middle ? "1px solid #c4c4c4" : "")};
-  border-right: ${(props) => (props.middle ? "1px solid #c4c4c4" : "")};
+  border-left: ${(props) =>
+    props.middle ? `1px solid ${props.theme.color.gray2}` : ""};
+  border-right: ${(props) =>
+    props.middle ? `1px solid ${props.theme.color.gray2}` : ""};
 `;
 
 export default function OrderNum({

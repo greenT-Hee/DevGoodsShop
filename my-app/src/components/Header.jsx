@@ -7,7 +7,7 @@ import MyModal from "./MyModal";
 import { useState } from "react";
 
 const Header = styled.header`
-  background: #ffffff;
+  background: ${(props) => props.theme.color.white};
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
   padding: 22px 100px;
 `;
@@ -31,8 +31,8 @@ const MainLogo = styled.img`
 const SearchInput = styled.input`
   width: 400px;
   box-sizing: border-box;
-  background: #ffffff;
-  border: 2px solid #21bf48;
+  background: ${(props) => props.theme.color.white};
+  border: 2px solid ${(props) => props.theme.color.main};
   border-radius: 50px;
   padding: 13px 22px;
 `;
@@ -57,7 +57,7 @@ const HeaderIcon = styled.img`
 const HeaderText = styled.p`
   font-weight: 400;
   font-size: 12px;
-  color: #767676;
+  color: ${(props) => props.theme.color.gray3};
   width: 56px;
 `;
 

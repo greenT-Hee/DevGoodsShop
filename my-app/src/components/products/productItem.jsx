@@ -10,7 +10,7 @@ const CardLi = styled.li`
 const ProductImgWrap = styled.button`
   width: 380px;
   height: 380px;
-  border: 1px solid #c4c4c4;
+  border: 1px solid ${(props) => props.theme.color.gray2};
   border-radius: 10px;
 `;
 
@@ -22,7 +22,7 @@ const ProdcuctImg = styled.img`
 `;
 
 const ProductInfoSpan = styled.p`
-  color: #767676;
+  color: ${(props) => props.theme.color.gray3};
   font-size: 16px;
   padding-top: 16px;
 `;
@@ -43,7 +43,7 @@ const ProductPriceSpan = styled.span`
 `;
 
 const SoldoutSpan = styled.span`
-  color: red;
+  color: ${(props) => props.theme.color.point};
 `;
 
 export default function ProductItem({

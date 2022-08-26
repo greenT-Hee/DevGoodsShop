@@ -16,8 +16,9 @@ const DirectBuyBtn = styled.button`
   width: 416px;
   height: 60px;
   border-radius: 5px;
-  color: #fff;
-  background-color: ${(props) => (props.soldout ? "#c4c4c4" : "#21bf48")};
+  color: ${(props) => props.theme.color.white};
+  background-color: ${(props) =>
+    props.soldout ? props.theme.color.gray2 : props.theme.color.main};
 `;
 
 export default function OrderButtons({

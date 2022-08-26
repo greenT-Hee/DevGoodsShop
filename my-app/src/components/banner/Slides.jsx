@@ -18,7 +18,7 @@ const ArrowLi = styled.li`
   top: 50%;
   transform: translate(0, -50%);
   z-index: 10;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.color.white};
   opacity: 0.1;
   border-radius: 10px;
 
@@ -43,12 +43,12 @@ const DotsContainerStyle = styled.div`
 const DotsStyle = styled.div`
   font-size: 10px;
   cursor: pointer;
-  color: #767676;
+  color: ${(props) => props.theme.color.gray3};
 
   &:hover,
   :focus,
   :active {
-    color: #21bf48;
+    color: ${(props) => props.theme.color.mainColor};
   }
 `;
 

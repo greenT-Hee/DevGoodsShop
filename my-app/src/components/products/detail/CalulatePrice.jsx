@@ -9,15 +9,15 @@ const WrapCostDiv = styled.div`
 
 const TotalSpan = styled.span`
   font-size: 18px;
-  color: #767676;
+  color: ${(props) => props.theme.color.gray3};
 `;
 
 const TotalNumberSpan = styled.span`
-  color: #21bf48;
+  color: ${(props) => props.theme.color.main};
 `;
 
 const TotalNumberStrong = styled.strong`
-  color: #21bf48;
+  color: ${(props) => props.theme.color.main};
   font-weight: 700;
   font-size: 36px;
   margin-left: 12px;

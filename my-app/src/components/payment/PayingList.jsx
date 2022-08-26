@@ -18,7 +18,7 @@ const NavUl = styled.ul`
   display: flex;
   align-items: center;
   height: 60px;
-  background-color: #f2f2f2;
+  background-color: ${(props) => props.theme.color.gray1};
   text-align: center;
 `;
 
@@ -42,7 +42,7 @@ const TotalCostP = styled.p`
 const TotalCostSpan = styled.span`
   font-weight: 700;
   font-size: 24px;
-  color: #eb5757;
+  color: ${(props) => props.theme.color.point};
   display: inline;
   padding-left: 10px;
 `;

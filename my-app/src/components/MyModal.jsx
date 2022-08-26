@@ -13,7 +13,7 @@ const ModalUl = styled.ul`
   width: 130px;
   border-radius: 10px;
   padding: 10px;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.color.white};
   filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.25));
   box-sizing: border-box;
 `;
@@ -25,18 +25,18 @@ const ModalSelectLi = styled.li`
   box-sizing: border-box;
 
   &:hover {
-    border: 1px solid #767676;
+    border: 1px solid ${(props) => props.theme.color.gray3};
     border-radius: 5px;
     outline: none;
   }
 `;
 
 const ModalSelectBtn = styled.button`
-  color: #767676;
+  color: ${(props) => props.theme.color.gray3};
   box-sizing: border-box;
 
   &:hover {
-    color: #000;
+    color: ${(props) => props.theme.color.black};
     outline: none;
   }
 `;
@@ -47,7 +47,7 @@ const ModalArrowDiv = styled.div`
   height: 14px;
   left: 57px;
   top: -7px;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.color.white};
   filter: drop-shadow(-9px -9px 7px rgba(0, 0, 0, 0.05));
   transform: rotate(45deg);
   z-index: 20;

@@ -23,8 +23,8 @@ const LoginDiv = styled.div`
   padding: 35px;
   box-sizing: border-box;
   border-radius: 10px;
-  border: 1px solid #c4c4c4;
-  background-color: #fff;
+  border: 1px solid ${(props) => props.theme.color.gray2};
+  background-color: ${(props) => props.theme.color.white};
 `;
 
 const LoginInput = styled.input`
@@ -33,7 +33,7 @@ const LoginInput = styled.input`
   margin-bottom: 6px;
   font-size: 16px;
   border: none;
-  border-bottom: 1px solid #c4c4c4;
+  border-bottom: 1px solid ${(props) => props.theme.color.gray2};
 `;
 
 const LoginBtn = styled.button`
@@ -43,8 +43,9 @@ const LoginBtn = styled.button`
   font-weight: 700;
   font-size: 18px;
   border-radius: 5px;
-  background-color: ${(props) => (props.disabled ? "#c4c4c4" : "#21bf48 ")};
-  color: #fff;
+  background-color: ${(props) =>
+    props.disabled ? props.theme.color.gray2 : props.theme.color.main};
+  color: ${(props) => props.theme.color.white};
 `;
 
 const WrapLinkUl = styled.ul`
@@ -59,7 +60,7 @@ const WrapLinkUl = styled.ul`
     left: 90px;
     width: 1px;
     height: 18px;
-    background-color: #333333;
+    background-color: ${(props) => props.theme.color.gray4};
   }
 `;
 
@@ -67,7 +68,7 @@ const LinkJoin = styled.li`
   list-style-type: none;
   display: inline-block;
   font-size: 16px;
-  color: #333333;
+  color: ${(props) => props.theme.color.gray4};
   margin: 0 16px;
 `;
 
@@ -75,7 +76,7 @@ const LinkFindPW = styled.li`
   list-style-type: none;
   display: inline-block;
   font-size: 16px;
-  color: #333333;
+  color: ${(props) => props.theme.color.gray4};
   margin: 0 16px;
 `;
 
@@ -104,7 +105,7 @@ const Login = () => {
       });
 
       if (response.data.token) {
-        setCookies("refreshToken", response.data.token, {
+        setCookies("refreshToken", "JWT " + response.data.token, {
           path: "/",
           sameSite: "strict",
         });

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useLocation } from "react-router";
 import styled from "styled-components";
 import AxiosInstance from "../../Axios";
-import { getCookie } from "../../Cookie";
 
 const ShippingSection = styled.section`
   width: 1280px;
@@ -14,7 +13,7 @@ const H2 = styled.h2`
   font-weight: 500;
   font-size: 24px;
   padding-bottom: 18px;
-  border-bottom: 2px solid #c4c4c4;
+  border-bottom: 2px solid ${(props) => props.theme.color.gray2};
 `;
 
 const InfoSection = styled.section`
@@ -33,7 +32,7 @@ const InfoH3 = styled.h3`
     content: "";
     width: 1280px;
     height: 2px;
-    background-color: #c4c4c4;
+    background-color: ${(props) => props.theme.color.gray2};
     bottom: -8px;
   }
 `;
@@ -42,7 +41,7 @@ const WrapInputDiv = styled.div`
   display: flex;
   align-items: center;
   padding: 18px 0;
-  border-bottom: 1px #c4c4c4 solid;
+  border-bottom: 1px ${(props) => props.theme.color.gray2} solid;
 `;
 
 const Label1 = styled.label`
@@ -53,7 +52,7 @@ const Input = styled.input`
   width: 334px;
   height: 40px;
   border-radius: 5px;
-  border: 1px solid #c4c4c4;
+  border: 1px solid ${(props) => props.theme.color.gray2};
 `;
 
 const SelectPayWaySection = styled.section`
@@ -67,7 +66,7 @@ const PayWayLayoutDiv = styled.div`
 
 const PayWayForm = styled.form`
   padding: 18px 0;
-  border-bottom: 2px solid #c4c4c4;
+  border-bottom: 2px solid ${(props) => props.theme.color.gray2};
 `;
 
 const Label2 = styled.label`

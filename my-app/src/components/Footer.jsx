@@ -3,7 +3,7 @@ import spriteSns from "../assets/sns.png";
 
 const FooterSection = styled.footer`
   width: 100%;
-  background: #f2f2f2;
+  background: ${(props) => props.theme.color.gray1};
   overflow: hidden;
 `;
 
@@ -17,7 +17,7 @@ const FooterDiv1 = styled.div`
 const FooterDiv2 = styled.div`
   width: 1280px;
   margin: 0 auto 63px;
-  border-top: 1px solid #c4c4c4;
+  border-top: 1px solid ${(props) => props.theme.color.gray2};
 `;
 
 const FooterUl = styled.ul`
@@ -33,7 +33,7 @@ const FooterLi = styled.li`
 
 const FooterDl = styled.dl`
   width: 260px;
-  color: #767676;
+  color: ${(props) => props.theme.color.gray3};
   font-size: 14px;
 `;
 

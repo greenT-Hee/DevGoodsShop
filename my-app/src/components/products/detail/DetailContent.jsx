@@ -14,7 +14,7 @@ const ProdcuctImg = styled.img`
 `;
 
 const ProductInfoP = styled.p`
-  color: #767676;
+  color: ${(props) => props.theme.color.gray3};
   font-size: 18px;
   padding-bottom: 16px;
 `;
@@ -35,13 +35,13 @@ const ProductPriceSpan = styled.span`
 `;
 
 const DeliverySpan = styled.p`
-  color: #767676;
+  color: ${(props) => props.theme.color.gray3};
   font-size: 16px;
   margin: 138px 0 52px;
 `;
 
 const SoldoutSpan = styled.span`
-  color: red;
+  color: ${(props) => props.theme.color.point};
   font-size: 18px;
 `;
 

@@ -12,7 +12,7 @@ const PayListLi = styled.li`
     display: block;
     position: absolute;
     content: "";
-    background-color: #c4c4c4;
+    background-color: ${(props) => props.theme.color.gray2};
     width: 1280px;
     height: 0.5px;
     bottom: 0;
@@ -35,7 +35,7 @@ const PayListImg = styled.img`
 
 const PayListInfoP = styled.p`
   font-size: 14px;
-  color: #767676;
+  color: ${(props) => props.theme.color.gray3};
 
   padding-top: ${(props) => (props.first ? "20px" : "")};
 `;
@@ -48,7 +48,8 @@ const FontP1 = styled.p`
   font-size: 18px;
   text-align: center;
   flex-grow: ${(props) => (props.dash ? "1" : "0.9")};
-  color: ${(props) => (props.price ? "#000" : "#767676")};
+  color: ${(props) =>
+    props.price ? props.theme.color.black : props.theme.color.gray3};
   font-weight: ${(props) => (props.price ? "700" : "400")};
 `;
 

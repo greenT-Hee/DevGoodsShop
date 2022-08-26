@@ -13,7 +13,8 @@ const LoginSection = styled.section`
 
 const MainLogo = styled.img`
   width: 280px;
-  margin-left: 156px;
+  display: block;
+  margin: 0 auto;
 `;
 
 const LoginDiv = styled.div`

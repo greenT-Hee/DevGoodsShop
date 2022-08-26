@@ -21,11 +21,12 @@ const ModalUl = styled.ul`
 const ModalSelectLi = styled.li`
   text-align: center;
   width: 110px;
-  padding: 10px 0;
+  height: 35px;
+  padding: 10px;
   box-sizing: border-box;
 
   &:hover {
-    border: 1px solid ${(props) => props.theme.color.gray3};
+    border: 1px solid ${(props) => props.theme.color.main};
     border-radius: 5px;
     outline: none;
   }
@@ -36,7 +37,7 @@ const ModalSelectBtn = styled.button`
   box-sizing: border-box;
 
   &:hover {
-    color: ${(props) => props.theme.color.black};
+    color: ${(props) => props.theme.color.main};
     outline: none;
   }
 `;

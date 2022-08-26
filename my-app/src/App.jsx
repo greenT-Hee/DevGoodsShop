@@ -10,8 +10,8 @@ import PaymentPage from "./pages/PaymentPage";
 
 const theme = {
   color: {
-    main: "#9370DB",
-    point: " #fa8072",
+    main: "#fc7575",
+    point: " #26b887",
     white: "#fff",
     gray1: "#F2F2F2",
     gray2: "#C4C4C4",

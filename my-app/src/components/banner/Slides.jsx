@@ -48,7 +48,7 @@ const DotsStyle = styled.div`
   &:hover,
   :focus,
   :active {
-    color: ${(props) => props.theme.color.mainColor};
+    color: ${(props) => props.theme.color.main};
   }
 `;
 

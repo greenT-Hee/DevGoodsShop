@@ -105,7 +105,7 @@ export default function Footer() {
       </FooterDiv1>
       <FooterDiv2>
         <FooterDl>
-          <FooterDt>(주) DEV VILLIAGE</FooterDt>
+          <FooterDt>(주) DevGoodsSHOP</FooterDt>
           {contentDd.map((item, index) => {
             return <FooterDd key={index}>{item}</FooterDd>;
           })}

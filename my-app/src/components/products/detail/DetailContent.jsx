@@ -52,6 +52,8 @@ export default function DetailContent({
   productInfo,
   productName,
   stock,
+  shippingFee,
+  shippingMethod,
 }) {
   return (
     <ProductDetailArticle>
@@ -65,7 +67,9 @@ export default function DetailContent({
           {stock === 0 && <SoldoutSpan>{` (품절)`}</SoldoutSpan>}
         </ProductPriceStrong>
         {/* 주문 수량 */}
-        <DeliverySpan>택배배송/ 무료배송</DeliverySpan>
+        <DeliverySpan>
+          {shippingMethod} / {shippingFee}원
+        </DeliverySpan>
         <OrderProduct
           price={price}
           productId={productId}
@@ -73,6 +77,8 @@ export default function DetailContent({
           productName={productName}
           productInfo={productInfo}
           stock={stock}
+          shippingFee={shippingFee}
+          shippingMethod={shippingMethod}
         />
       </div>
     </ProductDetailArticle>

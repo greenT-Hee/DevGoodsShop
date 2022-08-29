@@ -31,6 +31,8 @@ export default function DetailCard() {
         productInfo={detailInfo.product_info}
         productName={detailInfo.product_name}
         stock={detailInfo.stock}
+        shippingFee={detailInfo.shipping_fee}
+        shippingMethod={detailInfo.shipping_method}
       />
     </section>
   );

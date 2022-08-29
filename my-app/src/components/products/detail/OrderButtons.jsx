@@ -29,6 +29,8 @@ export default function OrderButtons({
   productName,
   productInfo,
   stock,
+  shippingFee,
+  shippingMethod,
 }) {
   const nav = useNavigate();
   const cookie = getCookie("refreshToken");
@@ -42,6 +44,8 @@ export default function OrderButtons({
           image: image,
           productName: productName,
           productInfo: productInfo,
+          shippingFee: shippingFee,
+          shippingMethod: shippingMethod,
         },
       });
     } else if (!cookie) {

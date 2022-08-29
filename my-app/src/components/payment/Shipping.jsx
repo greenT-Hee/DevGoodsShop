@@ -78,7 +78,8 @@ export default function Shipping() {
   const productId = location.state.productId;
   const orderNum = location.state.orderNum;
   const price = location.state.price;
-  const totalPrice = parseInt(orderNum * price);
+  const shippingFee = location.state.shippingFee;
+  const totalPrice = parseInt(orderNum * price + shippingFee);
 
   const [receiver, setReceiver] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
@@ -119,7 +120,7 @@ export default function Shipping() {
   console.log(productId, orderNum, price, totalPrice, "🎉location");
   const order = async () => {
     try {
-      const response = await AxiosInstance.post("order/", orderReq);
+      const response = await AxiosInstance.post("/order/", orderReq);
       console.log(response);
     } catch {
       console.error("error");
@@ -243,7 +244,7 @@ export default function Shipping() {
               type="radio"
               id="kakaoPay"
               name="pay"
-              value="KAKAOPAY"
+              value="KAKAOPAY "
               onChange={handlePayment}
             />
             <Label2 htmlFor="kakaoPay">카카오페이</Label2>

@@ -55,12 +55,11 @@ const FontP1 = styled.p`
 
 export default function BuyingItmes() {
   const location = useLocation();
-  console.log(location.state);
-
   const orderNum = location.state.orderNum;
   const image = location.state.image;
   const price = location.state.price;
   const productName = location.state.productName;
+  const shippingFee = location.state.shippingFee;
   const productInfo = location.state.productInfo;
   const totalCost = parseInt(price * orderNum);
   return (
@@ -76,7 +75,7 @@ export default function BuyingItmes() {
         </div>
       </WrapItemsDiv>
       <FontP1 dash>- </FontP1>
-      <FontP1>무료배송</FontP1>
+      <FontP1>{shippingFee}</FontP1>
       <FontP1 price>{totalCost}원</FontP1>
     </PayListLi>
   );

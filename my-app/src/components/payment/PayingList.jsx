@@ -51,7 +51,8 @@ export default function PayingList() {
   const location = useLocation();
   const orderNum = location.state.orderNum;
   const price = location.state.price;
-  const totalCost = parseInt(price * orderNum);
+  const shippingFee = location.state.shippingFee;
+  const totalCost = parseInt(price * orderNum + shippingFee);
 
   console.log(orderNum, "payingList");
   return (

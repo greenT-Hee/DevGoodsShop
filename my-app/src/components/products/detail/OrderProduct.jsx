@@ -56,6 +56,8 @@ export default function OrderNum({
   productName,
   productInfo,
   stock,
+  shippingFee,
+  shippingMethod,
 }) {
   const [orderNum, setOrderNum] = useState(1);
 
@@ -99,6 +101,8 @@ export default function OrderNum({
         productName={productName}
         productInfo={productInfo}
         stock={stock}
+        shippingFee={shippingFee}
+        shippingMethod={shippingMethod}
       />
     </>
   );

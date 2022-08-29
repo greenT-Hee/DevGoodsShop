@@ -5,10 +5,8 @@ import { getCookie } from "./Cookie";
 const cookie = getCookie("refreshToken");
 const AxiosInstance = axios.create({
   baseURL: "https://openmarket.weniv.co.kr/",
-
   headers: {
     Authorization: cookie,
   },
-  withCredentials: true,
 });
 export default AxiosInstance;

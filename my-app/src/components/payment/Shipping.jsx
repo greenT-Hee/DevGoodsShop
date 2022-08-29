@@ -249,6 +249,7 @@ export default function Shipping() {
             />
             <Label2 htmlFor="kakaoPay">카카오페이</Label2>
           </PayWayForm>
+
           <form onSubmit={submitOrder}>
             <button>결제하기</button>
           </form>

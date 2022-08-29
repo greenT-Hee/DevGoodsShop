@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Slides from "./Slides";
-import banner1 from "../../assets/banner1.png";
+import banner1 from "../../assets/banner1.PNG";
 import banner2 from "../../assets/banner2.png";
 import banner3 from "../../assets/banner3.png";
 

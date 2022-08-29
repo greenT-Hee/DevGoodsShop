@@ -57,19 +57,27 @@ const ArrowImg = styled.img`
   height: 100%;
 `;
 
+// const SlidesDiv = styled.div`
+//   width: 100%;
+//   height: 100%;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   position: absolute;
+//   z-index: 5;
+//   top: 0;
+// `;
 export default function Slides({ slides }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const SlidesDiv = styled.div`
-    width: 100%;
-    height: 100%;
-    background: url(${slides[currentIndex].url});
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    position: absolute;
-    z-index: 5;
-    top: 0;
-  `;
+  const slidestyle = {
+    width: "100%",
+    height: "100%",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    position: "absolute",
+    backgroundImage: `url(${slides[currentIndex].url})`,
+    zIndex: "5",
+    top: "0",
+  };
 
   const goPrev = () => {
     const isFirstIndex = currentIndex === 0;
@@ -103,8 +111,7 @@ export default function Slides({ slides }) {
         </ArrowLi>
       </SlideUl>
       {/* 사진 */}
-      <SlidesDiv></SlidesDiv>
-      {/*  */}
+      <div style={slidestyle}></div>
       <DotsContainerStyle>
         {slides.map((slides, slideIndex) => {
           return (

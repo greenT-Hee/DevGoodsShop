@@ -23,7 +23,7 @@ const NavUl = styled.ul`
 `;
 
 const NavItemLi1 = styled.li`
-  flex-grow: 3.1;
+  width: 618px;
 `;
 const NavItemLi2 = styled.li`
   flex-grow: 1;

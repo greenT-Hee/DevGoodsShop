@@ -88,7 +88,7 @@ export default function OrderNum() {
       {/* 총 수량, 총 가격 */}
       <CalulatePrice orderNum={orderNum} price={price} />
       {/* 구매 버튼 */}
-      <OrderButtons />
+      <OrderButtons orderNum={orderNum} />
     </>
   );
 }

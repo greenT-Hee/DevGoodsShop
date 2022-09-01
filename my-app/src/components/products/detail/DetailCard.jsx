@@ -2,7 +2,10 @@ import { useEffect } from "react";
 import AxiosInstance from "../../../Axios";
 import DetailContent from "./DetailContent";
 import { useSelector, useDispatch } from "react-redux";
-import { detailProduct } from "../../../redux/actions/productsAction";
+import {
+  detailProduct,
+  removeSelectedProduct,
+} from "../../../redux/actions/productsAction";
 
 export default function DetailCard() {
   const product = useSelector((state) => state);
@@ -24,6 +27,10 @@ export default function DetailCard() {
     if (productId && productId !== "") {
       getProductDtail();
     }
+
+    return () => {
+      dispatch(removeSelectedProduct());
+    };
   }, [productId]);
 
   return (

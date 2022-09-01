@@ -17,6 +17,8 @@ export const detailProductReducer = (state = {}, { type, payload }) => {
   switch (type) {
     case ActionTypes.DETAIL_PRODUCT:
       return { ...state, ...payload };
+    case ActionTypes.REMOVE_PRODUCT:
+      return {};
     default:
       return state;
   }

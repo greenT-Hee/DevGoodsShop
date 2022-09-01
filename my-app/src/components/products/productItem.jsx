@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const CardLi = styled.li`
   width: 380px;
@@ -46,32 +47,37 @@ const SoldoutSpan = styled.span`
   color: ${(props) => props.theme.color.point};
 `;
 
-export default function ProductItem({
-  productId,
-  productName,
-  image,
-  price,
-  productInfo,
-  stock,
-}) {
+export default function ProductItem() {
+  const products = useSelector((state) => state.allProducts.products);
   const nav = useNavigate();
-  const goDetailPage = () => {
-    nav(`/productDetail/${productId}`);
-    localStorage.setItem("id", productId);
-  };
+  console.log("Products: ", products);
 
+  const renderList = products.map((item) => {
+    const { image, product_id, product_name, product_info, price, stock } =
+      item;
+    const goDetailPage = () => {
+      nav(`/productDetail/${product_id}`);
+      localStorage.setItem("id", product_id);
+    };
+    return (
+      <CardLi key={product_id} onClick={goDetailPage}>
+        <ProductImgWrap>
+          <ProdcuctImg src={image} alt="상품 사진" />
+        </ProductImgWrap>
+        <ProductInfoSpan>{product_info}</ProductInfoSpan>
+        <ProductNameSpan>{product_name}</ProductNameSpan>
+        <ProductPriceStrong>
+          {price}
+          <ProductPriceSpan>원</ProductPriceSpan>
+          {stock === 0 && <SoldoutSpan>{` (품절)`}</SoldoutSpan>}
+        </ProductPriceStrong>
+      </CardLi>
+    );
+  });
   return (
-    <CardLi>
-      <ProductImgWrap onClick={goDetailPage}>
-        <ProdcuctImg src={image} alt="상품 사진" />
-      </ProductImgWrap>
-      <ProductInfoSpan>{productInfo}</ProductInfoSpan>
-      <ProductNameSpan>{productName}</ProductNameSpan>
-      <ProductPriceStrong>
-        {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-        <ProductPriceSpan>원</ProductPriceSpan>
-        {stock === 0 && <SoldoutSpan>{` (품절)`}</SoldoutSpan>}
-      </ProductPriceStrong>
-    </CardLi>
+    <>
+      {renderList}
+      {products === "[]" && <h2 style={{ color: "red" }}>Loading...</h2>}
+    </>
   );
 }

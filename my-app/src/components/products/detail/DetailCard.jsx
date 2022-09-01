@@ -1,39 +1,35 @@
 import { useEffect } from "react";
 import AxiosInstance from "../../../Axios";
 import DetailContent from "./DetailContent";
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { detailProduct } from "../../../redux/actions/productsAction";
 
 export default function DetailCard() {
+  const product = useSelector((state) => state);
+  const dispatch = useDispatch();
   const productId = localStorage.getItem("id");
-  const [detailInfo, setDetailIfo] = useState([]);
+  console.log("DetilaCard💚", product);
 
   const getProductDtail = async () => {
     try {
       const response = await AxiosInstance.get(`/products/${productId}/`);
-      setDetailIfo(response.data);
-      console.log(response.data);
+      dispatch(detailProduct(response.data));
+      // console.log(response.data);
     } catch {
       console.error("Error");
     }
   };
 
   useEffect(() => {
-    getProductDtail();
-  }, []);
+    if (productId && productId !== "") {
+      getProductDtail();
+    }
+  }, [productId]);
 
   return (
     <section>
       <h2 className="ir">상품 상세 페이지</h2>
-      <DetailContent
-        image={detailInfo.image}
-        price={detailInfo.price}
-        productId={detailInfo.product_id}
-        productInfo={detailInfo.product_info}
-        productName={detailInfo.product_name}
-        stock={detailInfo.stock}
-        shippingFee={detailInfo.shipping_fee}
-        shippingMethod={detailInfo.shipping_method}
-      />
+      <DetailContent />
     </section>
   );
 }

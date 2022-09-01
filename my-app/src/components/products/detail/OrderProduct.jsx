@@ -4,6 +4,7 @@ import minus from "../../../assets/icon-minus-line.svg";
 import { useState } from "react";
 import CalulatePrice from "./CalulatePrice";
 import OrderButtons from "./OrderButtons";
+import { useSelector } from "react-redux";
 
 const WrapOrderNumDiv = styled.div`
   width: 630px;
@@ -49,17 +50,11 @@ const OrderNumLi = styled.li`
     props.middle ? `1px solid ${props.theme.color.gray2}` : ""};
 `;
 
-export default function OrderNum({
-  price,
-  productId,
-  image,
-  productName,
-  productInfo,
-  stock,
-  shippingFee,
-  shippingMethod,
-}) {
+export default function OrderNum() {
+  const product = useSelector((state) => state.detailProduct);
+  const { stock, price } = product;
   const [orderNum, setOrderNum] = useState(1);
+  console.log("🎉", product);
 
   const minusOrder = () => {
     if (stock) {
@@ -93,17 +88,7 @@ export default function OrderNum({
       {/* 총 수량, 총 가격 */}
       <CalulatePrice orderNum={orderNum} price={price} />
       {/* 구매 버튼 */}
-      <OrderButtons
-        productId={productId}
-        orderNum={orderNum}
-        image={image}
-        price={price}
-        productName={productName}
-        productInfo={productInfo}
-        stock={stock}
-        shippingFee={shippingFee}
-        shippingMethod={shippingMethod}
-      />
+      <OrderButtons />
     </>
   );
 }

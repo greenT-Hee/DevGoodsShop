@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import AxiosInstance from "../../Axios";
 import ProductItem from "./productItem";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { setProducts } from "../../redux/actions/productsAction";
 
 const CardUl = styled.ul`
   display: flex;
@@ -13,37 +15,26 @@ const CardUl = styled.ul`
 `;
 
 export default function ProductCard() {
-  const [productData, setProductData] = useState([]);
+  const products = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   const getProductList = async () => {
     try {
       const response = await AxiosInstance.get("products/");
-      setProductData(response.data.results);
-      console.log(response);
+      console.log(products);
+      console.log("에효 :", response.data.results);
+      dispatch(setProducts(response.data.results));
     } catch {
       console.error("Error");
     }
   };
-
   useEffect(() => {
     getProductList();
   }, []);
 
   return (
     <CardUl>
-      {productData.map((item, index) => {
-        return (
-          <ProductItem
-            key={index}
-            productId={item.product_id}
-            productName={item.product_name}
-            image={item.image}
-            price={item.price}
-            productInfo={item.product_info}
-            stock={item.stock}
-          />
-        );
-      })}
+      <ProductItem />
     </CardUl>
   );
 }

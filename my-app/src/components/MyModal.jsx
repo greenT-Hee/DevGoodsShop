@@ -60,13 +60,18 @@ export default function MyModal() {
     navigate("/");
     logout("refreshToken");
   };
+
+  const goMyPage = () => {
+    navigate("/myPage");
+  };
+
   return (
     <>
       <ModalDiv1>
         <ModalArrowDiv></ModalArrowDiv>
         <ModalUl>
           <ModalSelectLi>
-            <ModalSelectBtn>마이페이지</ModalSelectBtn>
+            <ModalSelectBtn onClick={goMyPage}>마이페이지</ModalSelectBtn>
           </ModalSelectLi>
           <ModalSelectLi>
             <ModalSelectBtn onClick={handleLogout}>로그아웃</ModalSelectBtn>

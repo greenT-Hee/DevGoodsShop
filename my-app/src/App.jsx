@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import ProductDetail from "./pages/ProductDetail";
 import PaymentPage from "./pages/PaymentPage";
+import MyPage from "./pages/MyPage";
 
 const theme = {
   color: {
@@ -31,6 +32,7 @@ function App() {
           <Route path="/signUp" element={<SignUpPage />} />
           <Route path="/productDetail/:id" element={<ProductDetail />} />
           <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/myPage" element={<MyPage />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

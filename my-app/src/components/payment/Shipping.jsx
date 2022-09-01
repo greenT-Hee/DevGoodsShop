@@ -74,6 +74,69 @@ const Label2 = styled.label`
   margin-right: 10px;
 `;
 
+const CheckWrapDiv = styled.div`
+  width: 480px;
+  box-sizing: border-box;
+  border: 2px solid ${(props) => props.theme.color.main};
+  border-radius: 10px;
+`;
+
+const CheckDiv1 = styled.div`
+  position: relative;
+  padding: 34px 30px 0;
+
+  &::before {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 432px;
+    height: 1px;
+    left: 22px;
+    top: 143px;
+    background-color: ${(props) => props.theme.color.gray2};
+  }
+`;
+
+const CheckH3 = styled.h3`
+  font-size: 24px;
+  padding-bottom: 18px;
+`;
+
+const CheckDiv2 = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: ${(props) => (props.cost ? "49px" : "15px")};
+`;
+
+const CheckP1 = styled.p`
+  font-weight: 700;
+  font-size: 18px;
+`;
+
+const CheckSpan = styled.span`
+  font-size: 14px;
+  font-weight: 400;
+  padding-left: 4px;
+`;
+
+const CheckForm = styled.form`
+  background-color: ${(props) => props.theme.color.gray1};
+  border-radius: 0 0 10px 10px;
+  padding: 30px;
+`;
+
+const CheckButton = styled.button`
+  display: block;
+  margin: 30px auto 0;
+  width: 220px;
+  height: 68px;
+  background-color: ${(props) => props.theme.color.gray2};
+  color: ${(props) => props.theme.color.white};
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 24px;
+`;
+
 export default function Shipping() {
   const cookie = getCookie("refreshToken");
   const location = useLocation();
@@ -254,12 +317,47 @@ export default function Shipping() {
             />
             <Label2 htmlFor="kakaoPay">카카오페이</Label2>
           </PayWayForm>
-
-          <form onSubmit={submitOrder}>
-            <button>결제하기</button>
-          </form>
         </PayWayLayoutDiv>
       </SelectPayWaySection>
+
+      <section>
+        <CheckH3>최종 결제 정보</CheckH3>
+        <CheckWrapDiv>
+          <CheckDiv1>
+            <CheckDiv2>
+              <p>- 상품금액</p>
+              <CheckP1>
+                46500 <CheckSpan>원</CheckSpan>
+              </CheckP1>
+            </CheckDiv2>
+            <CheckDiv2>
+              <p>- 할인금액</p>
+              <CheckP1>
+                0<CheckSpan>원</CheckSpan>
+              </CheckP1>
+            </CheckDiv2>
+            <CheckDiv2 cost>
+              <p>- 배송비</p>
+              <CheckP1>
+                46500<CheckSpan>원</CheckSpan>
+              </CheckP1>
+            </CheckDiv2>
+            <CheckDiv2>
+              <p>- 결제금액</p>
+              <CheckP1>
+                46500<CheckSpan>원</CheckSpan>
+              </CheckP1>
+            </CheckDiv2>
+          </CheckDiv1>
+          <CheckForm onSubmit={submitOrder}>
+            <p>
+              <input type="checkbox" required />
+              주문 내용을 확인하였으며, 정보 제공 등에 동의합니다.
+            </p>
+            <CheckButton>결제하기</CheckButton>
+          </CheckForm>
+        </CheckWrapDiv>
+      </section>
     </>
   );
 }

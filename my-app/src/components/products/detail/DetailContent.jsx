@@ -56,7 +56,6 @@ export default function DetailContent() {
     stock,
     shipping_fee,
     shipping_method,
-    product_id,
   } = product;
 
   console.log("product!🐰", product);

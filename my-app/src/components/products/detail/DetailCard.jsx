@@ -17,7 +17,6 @@ export default function DetailCard() {
     try {
       const response = await AxiosInstance.get(`/products/${productId}/`);
       dispatch(detailProduct(response.data));
-      // console.log(response.data);
     } catch {
       console.error("Error");
     }

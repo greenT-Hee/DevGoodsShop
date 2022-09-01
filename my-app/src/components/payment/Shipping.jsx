@@ -81,7 +81,7 @@ export default function Shipping() {
   const shippingFee = location.state.shippingFee;
   const totalPrice = parseInt(orderNum * price + shippingFee);
 
-  const [receiver, setReceiver] = useState("");
+  const [reciever, setReceiver] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
   const [address, setAddress] = useState("");
   const [message, setMessage] = useState("");
@@ -108,22 +108,24 @@ export default function Shipping() {
     quantity: orderNum,
     order_kind: "direct_order",
 
-    reciever: receiver,
-    reciever_phone_number: phoneNum,
+    receiver: reciever,
+    receiver_phone_number: phoneNum,
     address: address,
     address_message: message,
     payment_method: payment,
     total_price: totalPrice,
   };
 
-  console.log(receiver, phoneNum, address, message, payment);
+  console.log(orderReq);
+
+  console.log(reciever, phoneNum, address, message, payment);
   console.log(productId, orderNum, price, totalPrice, "🎉location");
   const order = async () => {
     try {
       const response = await AxiosInstance.post("/order/", orderReq);
       console.log(response);
     } catch {
-      console.error("error");
+      console.log("error");
     }
   };
 

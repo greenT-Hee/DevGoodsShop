@@ -6,3 +6,10 @@ export const setProducts = (products) => {
     payload: products,
   };
 };
+
+export const detailProduct = (products) => {
+  return {
+    type: ActionTypes.DETAIL_PRODUCT,
+    payload: products,
+  };
+};

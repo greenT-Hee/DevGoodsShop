@@ -23,3 +23,15 @@ export const detailProductReducer = (state = {}, { type, payload }) => {
       return state;
   }
 };
+
+export const payedProductsReducer = (
+  state = initialState,
+  { type, payload }
+) => {
+  switch (type) {
+    case ActionTypes.PAYED_PRODUCT:
+      return { ...state, products: payload };
+    default:
+      return state;
+  }
+};

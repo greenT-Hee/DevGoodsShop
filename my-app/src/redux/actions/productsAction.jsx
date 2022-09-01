@@ -19,3 +19,10 @@ export const removeSelectedProduct = () => {
     type: ActionTypes.REMOVE_PRODUCT,
   };
 };
+
+export const payedProductList = (products) => {
+  return {
+    type: ActionTypes.PAYED_PRODUCT,
+    payload: products,
+  };
+};

@@ -7,7 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import ProductDetail from "./pages/ProductDetail";
 import PaymentPage from "./pages/PaymentPage";
-import MyPage from "./pages/MyPage";
+import MyPage from "./pages/PayedList";
 
 const theme = {
   color: {

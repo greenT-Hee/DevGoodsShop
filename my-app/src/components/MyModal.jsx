@@ -61,7 +61,7 @@ export default function MyModal() {
     logout("refreshToken");
   };
 
-  const goMyPage = () => {
+  const goPayedList = () => {
     navigate("/myPage");
   };
 
@@ -71,7 +71,7 @@ export default function MyModal() {
         <ModalArrowDiv></ModalArrowDiv>
         <ModalUl>
           <ModalSelectLi>
-            <ModalSelectBtn onClick={goMyPage}>마이페이지</ModalSelectBtn>
+            <ModalSelectBtn onClick={goPayedList}>주문 내역</ModalSelectBtn>
           </ModalSelectLi>
           <ModalSelectLi>
             <ModalSelectBtn onClick={handleLogout}>로그아웃</ModalSelectBtn>

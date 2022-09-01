@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function MyPage() {
+export default function PayedList() {
   return <div>MyPage</div>;
 }

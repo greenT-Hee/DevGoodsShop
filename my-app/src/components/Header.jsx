@@ -14,7 +14,7 @@ const Header = styled.header`
 
 const WrapHeader = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 `;
 
 const LogoWrapDiv = styled.div`
@@ -80,12 +80,12 @@ export const HomeHeader = () => {
           <SearchInput type="search" id="search" />
         </LogoWrapDiv>
         <WrapIcon>
-          <li>
+          {/* <li>
             <button>
               <HeaderIcon src={cartLogo} alt="장바구니" />
               <HeaderText>장바구니</HeaderText>
             </button>
-          </li>
+          </li> */}
           <li>
             <button onClick={goLoginPage}>
               <HeaderIcon src={userImg} alt="로그인" />
@@ -125,12 +125,12 @@ export const ProductListHeader = () => {
           />
         </LogoWrapDiv>
         <WrapIcon>
-          <WrapIconLi>
+          {/* <WrapIconLi>
             <button href="#none">
               <HeaderIcon src={cartLogo} alt="장바구니" />
               <HeaderText>장바구니</HeaderText>
             </button>
-          </WrapIconLi>
+          </WrapIconLi> */}
           <WrapIconLi>
             <button onClick={handleModal}>
               <HeaderIcon src={userImg} alt="마이페이지" />

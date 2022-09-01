@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import AxiosInstance from "../Axios";
 import { Link } from "react-router-dom";
-import { setCookies } from "../Cookie";
+import { getCookie, setCookies } from "../Cookie";
 import { useNavigate } from "react-router-dom";
 
 const LoginSection = styled.section`

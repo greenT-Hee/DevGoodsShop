@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation } from "react-router";
 import styled from "styled-components";
 import AxiosInstance from "../../Axios";
+import { getCookie } from "../../Cookie";
 
 const ShippingSection = styled.section`
   width: 1280px;
@@ -74,6 +75,7 @@ const Label2 = styled.label`
 `;
 
 export default function Shipping() {
+  const cookie = getCookie("refreshToken");
   const location = useLocation();
   const productId = location.state.productId;
   const orderNum = location.state.orderNum;
@@ -116,13 +118,15 @@ export default function Shipping() {
     total_price: totalPrice,
   };
 
-  console.log(orderReq);
+  console.log(cookie);
 
   console.log(reciever, phoneNum, address, message, payment);
   console.log(productId, orderNum, price, totalPrice, "🎉location");
   const order = async () => {
     try {
-      const response = await AxiosInstance.post("/order/", orderReq);
+      const response = await AxiosInstance.post("/order/", orderReq, {
+        headers: { Authorization: cookie },
+      });
       console.log(response);
     } catch {
       console.log("error");
@@ -215,7 +219,6 @@ export default function Shipping() {
               name="pay"
               value="CARD"
               onChange={handlePayment}
-              defaultChecked
             />
             <Label2 htmlFor="credit">신용/체크카드</Label2>
             <input

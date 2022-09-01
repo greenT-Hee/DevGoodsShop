@@ -77,8 +77,8 @@ export default function ProductItem() {
   });
   return (
     <>
-      {products === "[]" && <h2 style={{ color: "red" }}>Loading</h2>}
       {renderList}
+      {products === "[]" && <h2 style={{ color: "red" }}>Loading...</h2>}
     </>
   );
 }

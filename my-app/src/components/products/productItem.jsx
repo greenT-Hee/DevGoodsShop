@@ -49,17 +49,16 @@ const SoldoutSpan = styled.span`
 
 export default function ProductItem() {
   const products = useSelector((state) => state.allProducts.products);
-  // const productId = useParams();
   const nav = useNavigate();
   console.log("Products: ", products);
 
   const renderList = products.map((item) => {
+    const { image, product_id, product_name, product_info, price, stock } =
+      item;
     const goDetailPage = () => {
       nav(`/productDetail/${product_id}`);
       localStorage.setItem("id", product_id);
     };
-    const { image, product_id, product_name, product_info, price, stock } =
-      item;
     return (
       <CardLi key={product_id} onClick={goDetailPage}>
         <ProductImgWrap>

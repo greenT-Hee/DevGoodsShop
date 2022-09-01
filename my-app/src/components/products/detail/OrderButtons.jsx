@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { getCookie } from "../../../Cookie";
+import { useSelector } from "react-redux";
 
 const WrapBuyDiv = styled.div`
   display: flex;
@@ -21,33 +22,15 @@ const DirectBuyBtn = styled.button`
     props.soldout ? props.theme.color.gray2 : props.theme.color.main};
 `;
 
-export default function OrderButtons({
-  productId,
-  orderNum,
-  image,
-  price,
-  productName,
-  productInfo,
-  stock,
-  shippingFee,
-  shippingMethod,
-}) {
+export default function OrderButtons() {
+  const product = useSelector((state) => state.detailProduct);
+  const { stock } = product;
+
   const nav = useNavigate();
   const cookie = getCookie("refreshToken");
   const GoPaymentPage = () => {
     if (cookie) {
-      nav("/payment", {
-        state: {
-          productId: productId,
-          orderNum: orderNum,
-          price: price,
-          image: image,
-          productName: productName,
-          productInfo: productInfo,
-          shippingFee: shippingFee,
-          shippingMethod: shippingMethod,
-        },
-      });
+      nav("/payment");
     } else if (!cookie) {
       alert("로그인이 필요합니다. 😥");
     }

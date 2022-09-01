@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import OrderProduct from "./OrderProduct";
 
@@ -45,22 +46,26 @@ const SoldoutSpan = styled.span`
   font-size: 18px;
 `;
 
-export default function DetailContent({
-  image,
-  price,
-  productId,
-  productInfo,
-  productName,
-  stock,
-  shippingFee,
-  shippingMethod,
-}) {
+export default function DetailContent() {
+  const product = useSelector((state) => state.detailProduct);
+  const {
+    product_info,
+    product_name,
+    image,
+    price,
+    stock,
+    shipping_fee,
+    shipping_method,
+    product_id,
+  } = product;
+
+  console.log("product!🐰", product);
   return (
     <ProductDetailArticle>
       <ProdcuctImg src={image} alt="상품 사진" />
       <div>
-        <ProductInfoP>{productInfo}</ProductInfoP>
-        <ProductNameP>{productName}</ProductNameP>
+        <ProductInfoP>{product_info}</ProductInfoP>
+        <ProductNameP>{product_name}</ProductNameP>
         <ProductPriceStrong>
           {price}
           <ProductPriceSpan>원</ProductPriceSpan>
@@ -68,18 +73,9 @@ export default function DetailContent({
         </ProductPriceStrong>
         {/* 주문 수량 */}
         <DeliverySpan>
-          {shippingMethod} / {shippingFee}원
+          {shipping_method} / {shipping_fee}원
         </DeliverySpan>
-        <OrderProduct
-          price={price}
-          productId={productId}
-          image={image}
-          productName={productName}
-          productInfo={productInfo}
-          stock={stock}
-          shippingFee={shippingFee}
-          shippingMethod={shippingMethod}
-        />
+        <OrderProduct />
       </div>
     </ProductDetailArticle>
   );

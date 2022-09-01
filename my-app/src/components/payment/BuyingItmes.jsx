@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useLocation } from "react-router";
+import { useSelector } from "react-redux";
 
 const PayListLi = styled.li`
   position: relative;
@@ -54,6 +55,8 @@ const FontP1 = styled.p`
 `;
 
 export default function BuyingItmes() {
+  const product = useSelector((state) => state.detailProduct);
+  console.log(product);
   const location = useLocation();
   const orderNum = location.state.orderNum;
   const image = location.state.image;

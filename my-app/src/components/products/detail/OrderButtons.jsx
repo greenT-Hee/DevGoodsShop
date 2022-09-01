@@ -22,15 +22,35 @@ const DirectBuyBtn = styled.button`
     props.soldout ? props.theme.color.gray2 : props.theme.color.main};
 `;
 
-export default function OrderButtons() {
+export default function OrderButtons({ orderNum }) {
   const product = useSelector((state) => state.detailProduct);
-  const { stock } = product;
+  const {
+    stock,
+    image,
+    price,
+    product_name,
+    prodcut_info,
+    product_id,
+    shipping_fee,
+    shipping_method,
+  } = product;
 
   const nav = useNavigate();
   const cookie = getCookie("refreshToken");
   const GoPaymentPage = () => {
     if (cookie) {
-      nav("/payment");
+      nav("/payment", {
+        state: {
+          image: image,
+          price: price,
+          productName: product_name,
+          prodcutInfo: prodcut_info,
+          productId: product_id,
+          shippingFee: shipping_fee,
+          shippingMethod: shipping_method,
+          orderNum: orderNum,
+        },
+      });
     } else if (!cookie) {
       alert("로그인이 필요합니다. 😥");
     }

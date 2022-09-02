@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import styled from "styled-components";
 import AxiosInstance from "../../Axios";
 import { getCookie } from "../../Cookie";
@@ -149,6 +149,7 @@ const CheckButton = styled.button`
 export default function Shipping() {
   const cookie = getCookie("refreshToken");
   const location = useLocation();
+  const image = location.state.image;
   const productId = location.state.productId;
   const orderNum = location.state.orderNum;
   const price = location.state.price;
@@ -194,11 +195,12 @@ export default function Shipping() {
 
   console.log(reciever, phoneNum, address, message, payment);
   console.log(productId, orderNum, price, totalPrice, "🎉location");
-  const order = async () => {
+  const order = async (response) => {
     try {
       const response = await AxiosInstance.post("/order/", orderReq, {
         headers: { Authorization: cookie },
       });
+      if (response.status === 200) goPayedList();
       console.log(response);
     } catch {
       console.log("error");
@@ -208,6 +210,11 @@ export default function Shipping() {
   const submitOrder = (e) => {
     e.preventDefault();
     order();
+  };
+
+  const nav = useNavigate();
+  const goPayedList = () => {
+    nav(`/payedList`);
   };
 
   return (

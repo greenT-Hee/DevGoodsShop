@@ -63,6 +63,7 @@ export default function BuyingItmes() {
   const shippingFee = location.state.shippingFee;
   const productInfo = location.state.productInfo;
   const totalCost = parseInt(price * orderNum);
+
   return (
     <PayListLi>
       <WrapItemsDiv>

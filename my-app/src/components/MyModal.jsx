@@ -62,7 +62,7 @@ export default function MyModal() {
   };
 
   const goPayedList = () => {
-    navigate("/myPage");
+    navigate("/payedList");
   };
 
   return (

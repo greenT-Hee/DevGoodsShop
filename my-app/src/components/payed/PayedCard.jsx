@@ -1,16 +1,36 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import AxiosInstance from "../Axios";
-import { getCookie } from "../Cookie";
-import { payedProductList } from "../redux/actions/productsAction";
+import AxiosInstance from "../../Axios";
+import { getCookie } from "../../Cookie";
+import { payedProductList } from "../../redux/actions/productsAction";
+import styled from "styled-components";
+import PayedList from "./PayedList";
 
-export default function PayedList() {
+const Section = styled.section`
+  width: 1280px;
+  margin: 70px auto;
+`;
+
+const H2 = styled.h2`
+  font-weight: 700;
+  font-size: 36px;
+  text-align: center;
+  padding-bottom: 54px;
+`;
+
+const Ul = styled.ul`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+`;
+
+export default function PayedCard() {
   const payedProduct = useSelector((state) => state.payedProduct.products);
   const dispatch = useDispatch();
+
   const cookie = getCookie("refreshToken");
   console.log(payedProduct, "주문리덕스💖");
-  console.log(cookie, "🍪🍪");
 
   const getPayedList = async () => {
     try {
@@ -29,9 +49,11 @@ export default function PayedList() {
   }, []);
 
   return (
-    <section>
-      <h2>주문 내역</h2>
-      <ul></ul>
-    </section>
+    <Section>
+      <H2>결제 내역</H2>
+      <Ul>
+        <PayedList />
+      </Ul>
+    </Section>
   );
 }

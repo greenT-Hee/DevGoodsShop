@@ -7,6 +7,7 @@ import { getCookie } from "../../Cookie";
 const ShippingSection = styled.section`
   width: 1280px;
   margin: 156px auto 70px;
+  overflow: hidden;
 `;
 
 const H2 = styled.h2`
@@ -58,7 +59,7 @@ const Input = styled.input`
 
 const SelectPayWaySection = styled.section`
   width: 1280px;
-  margin: 0 auto 70px;
+  margin: 70px auto 0;
 `;
 
 const PayWayLayoutDiv = styled.div`
@@ -74,10 +75,15 @@ const Label2 = styled.label`
   margin-right: 10px;
 `;
 
+const CheckSection = styled.section`
+  float: right;
+  margin-top: -105px;
+`;
+
 const CheckWrapDiv = styled.div`
   width: 480px;
   box-sizing: border-box;
-  border: 2px solid ${(props) => props.theme.color.main};
+  border: 3px solid ${(props) => props.theme.color.main};
   border-radius: 10px;
 `;
 
@@ -111,6 +117,8 @@ const CheckDiv2 = styled.div`
 const CheckP1 = styled.p`
   font-weight: 700;
   font-size: 18px;
+
+  color: ${(props) => (props.last ? `${props.theme.color.point}` : "#000")};
 `;
 
 const CheckSpan = styled.span`
@@ -130,7 +138,8 @@ const CheckButton = styled.button`
   margin: 30px auto 0;
   width: 220px;
   height: 68px;
-  background-color: ${(props) => props.theme.color.gray2};
+  background-color: ${(props) =>
+    props.able ? `${props.theme.color.main}` : `${props.theme.color.gray2}`};
   color: ${(props) => props.theme.color.white};
   border-radius: 5px;
   font-weight: 700;
@@ -243,6 +252,7 @@ export default function Shipping() {
                 type="text"
                 id="yourPhoneNum"
                 onChange={handlePhoneNum}
+                placeholder=" - 없이 작성해주세요"
                 required
               />
             </WrapInputDiv>
@@ -270,94 +280,101 @@ export default function Shipping() {
             </WrapInputDiv>
           </form>
         </InfoSection>
+
+        <SelectPayWaySection>
+          <PayWayLayoutDiv>
+            <H2>결제 수단</H2>
+            <PayWayForm onSubmit={submitOrder}>
+              <input
+                type="radio"
+                id="credit"
+                name="pay"
+                value="CARD"
+                onChange={handlePayment}
+              />
+              <Label2 htmlFor="credit">신용/체크카드</Label2>
+              <input
+                type="radio"
+                id="cash"
+                name="pay"
+                value="DEPOSIT"
+                onChange={handlePayment}
+              />
+              <Label2 htmlFor="cash">무통장 입금</Label2>
+              <input
+                type="radio"
+                id="phonePay"
+                name="pay"
+                value="PHONE_PAYMENT"
+                onChange={handlePayment}
+              />
+              <Label2 htmlFor="phonePay">휴대폰 결제</Label2>
+              <input
+                type="radio"
+                id="naverPay"
+                name="pay"
+                value="NAVERPAY"
+                onChange={handlePayment}
+              />
+              <Label2 htmlFor="naverPay">네이버페이</Label2>
+              <input
+                type="radio"
+                id="kakaoPay"
+                name="pay"
+                value="KAKAOPAY "
+                onChange={handlePayment}
+              />
+              <Label2 htmlFor="kakaoPay">카카오페이</Label2>
+            </PayWayForm>
+          </PayWayLayoutDiv>
+        </SelectPayWaySection>
+
+        <CheckSection>
+          <CheckH3>최종 결제 정보</CheckH3>
+          <CheckWrapDiv>
+            <CheckDiv1>
+              <CheckDiv2>
+                <p>- 상품금액</p>
+                <CheckP1>
+                  46500 <CheckSpan>원</CheckSpan>
+                </CheckP1>
+              </CheckDiv2>
+              <CheckDiv2>
+                <p>- 할인금액</p>
+                <CheckP1>
+                  0<CheckSpan>원</CheckSpan>
+                </CheckP1>
+              </CheckDiv2>
+              <CheckDiv2 cost>
+                <p>- 배송비</p>
+                <CheckP1>
+                  46500<CheckSpan>원</CheckSpan>
+                </CheckP1>
+              </CheckDiv2>
+              <CheckDiv2>
+                <p>- 결제금액</p>
+                <CheckP1 last>
+                  46500<CheckSpan>원</CheckSpan>
+                </CheckP1>
+              </CheckDiv2>
+            </CheckDiv1>
+            <CheckForm onSubmit={submitOrder}>
+              <p>
+                <input type="checkbox" required />
+                주문 내용을 확인하였으며, 정보 제공 등에 동의합니다.
+              </p>
+              {(reciever &&
+                phoneNum &&
+                address &&
+                phoneNum &&
+                message &&
+                payment && <CheckButton able>결제하기</CheckButton>) || (
+                <CheckButton disabled>결제하기</CheckButton>
+              )}
+            </CheckForm>
+          </CheckWrapDiv>
+        </CheckSection>
       </ShippingSection>
-
-      <SelectPayWaySection>
-        <PayWayLayoutDiv>
-          <H2>결제 수단</H2>
-          <PayWayForm onSubmit={submitOrder}>
-            <input
-              type="radio"
-              id="credit"
-              name="pay"
-              value="CARD"
-              onChange={handlePayment}
-            />
-            <Label2 htmlFor="credit">신용/체크카드</Label2>
-            <input
-              type="radio"
-              id="cash"
-              name="pay"
-              value="DEPOSIT"
-              onChange={handlePayment}
-            />
-            <Label2 htmlFor="cash">무통장 입금</Label2>
-            <input
-              type="radio"
-              id="phonePay"
-              name="pay"
-              value="PHONE_PAYMENT"
-              onChange={handlePayment}
-            />
-            <Label2 htmlFor="phonePay">휴대폰 결제</Label2>
-            <input
-              type="radio"
-              id="naverPay"
-              name="pay"
-              value="NAVERPAY"
-              onChange={handlePayment}
-            />
-            <Label2 htmlFor="naverPay">네이버페이</Label2>
-            <input
-              type="radio"
-              id="kakaoPay"
-              name="pay"
-              value="KAKAOPAY "
-              onChange={handlePayment}
-            />
-            <Label2 htmlFor="kakaoPay">카카오페이</Label2>
-          </PayWayForm>
-        </PayWayLayoutDiv>
-      </SelectPayWaySection>
-
-      <section>
-        <CheckH3>최종 결제 정보</CheckH3>
-        <CheckWrapDiv>
-          <CheckDiv1>
-            <CheckDiv2>
-              <p>- 상품금액</p>
-              <CheckP1>
-                46500 <CheckSpan>원</CheckSpan>
-              </CheckP1>
-            </CheckDiv2>
-            <CheckDiv2>
-              <p>- 할인금액</p>
-              <CheckP1>
-                0<CheckSpan>원</CheckSpan>
-              </CheckP1>
-            </CheckDiv2>
-            <CheckDiv2 cost>
-              <p>- 배송비</p>
-              <CheckP1>
-                46500<CheckSpan>원</CheckSpan>
-              </CheckP1>
-            </CheckDiv2>
-            <CheckDiv2>
-              <p>- 결제금액</p>
-              <CheckP1>
-                46500<CheckSpan>원</CheckSpan>
-              </CheckP1>
-            </CheckDiv2>
-          </CheckDiv1>
-          <CheckForm onSubmit={submitOrder}>
-            <p>
-              <input type="checkbox" required />
-              주문 내용을 확인하였으며, 정보 제공 등에 동의합니다.
-            </p>
-            <CheckButton>결제하기</CheckButton>
-          </CheckForm>
-        </CheckWrapDiv>
-      </section>
     </>
   );
 }

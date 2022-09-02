@@ -82,7 +82,10 @@ const CheckIdBtn = styled.button`
   height: 55px;
   border-radius: 5px;
   color: #fff;
-  background-color: ${(props) => props.theme.color.main};
+  background-color: ${(props) =>
+    props.disabled
+      ? `${props.theme.color.gray2}`
+      : `${props.theme.color.main}`};
 `;
 
 const SignUp = () => {
@@ -108,6 +111,26 @@ const SignUp = () => {
   const [isName, setIsName] = useState(false);
   const [isPhoneNum, setIsPhoneNum] = useState(false);
 
+  //계정 검증
+  const checkAccount = async () => {
+    try {
+      const response = await AxiosInstance.post("/accounts/signup/valid/", {
+        username: username,
+      });
+      console.log(response);
+      setUsernameMsg(response.data.Success);
+    } catch {
+      setUsernameMsg("이미 존재하는 아이디입니다.");
+      setIsUsername(false);
+      console.log("Err");
+    }
+  };
+
+  const handleCheckAcoount = (e) => {
+    e.preventDefault();
+    checkAccount();
+  };
+
   const signUp = async () => {
     try {
       const response = await AxiosInstance.post("accounts/signup/", {
@@ -123,7 +146,7 @@ const SignUp = () => {
       }
     } catch {
       console.error("ERROR");
-      alert(`가입된 회원입니다.🙏 아이디 및 휴대폰 번호를 다시 확인해주세요`);
+      alert(`📱 휴대폰 번호를 다시 확인해주세요`);
     }
   };
 
@@ -151,7 +174,7 @@ const SignUp = () => {
       setUsernameMsg("20자 이내의 영어 소문자,대문자, 숫자만 가능합니다.");
       setIsUsername(false);
     } else {
-      setUsernameMsg("멋진 아이디네요 :)");
+      setUsernameMsg("올바른 형식입니다.");
       setIsUsername(true);
     }
   }, []);
@@ -232,7 +255,10 @@ const SignUp = () => {
                 required
                 onChange={handleUsername}
               />
-              <CheckIdBtn>중복 확인</CheckIdBtn>
+              {!isUsername && <CheckIdBtn disabled>중복 확인</CheckIdBtn>}
+              {isUsername && (
+                <CheckIdBtn onClick={handleCheckAcoount}>중복 확인</CheckIdBtn>
+              )}
             </FlexDiv1>
             {(username.length > 0 && !isUsername && (
               <ErrorMsg>{usernameMsg}</ErrorMsg>

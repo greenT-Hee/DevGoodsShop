@@ -1,7 +1,7 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
-import mainLogo from "../assets/Logo-hodu.png";
+import mainLogo from "../assets/mainLogo.png";
 import AxiosInstance from "../Axios";
 import { Link } from "react-router-dom";
 
@@ -75,6 +75,14 @@ const ErrorMsg = styled.p`
 const SuccessMsg = styled.p`
   padding-bottom: 16px;
   color: #21bf48;
+`;
+
+const CheckIdBtn = styled.button`
+  width: 122px;
+  height: 55px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: ${(props) => props.theme.color.main};
 `;
 
 const SignUp = () => {
@@ -224,6 +232,7 @@ const SignUp = () => {
                 required
                 onChange={handleUsername}
               />
+              <CheckIdBtn>중복 확인</CheckIdBtn>
             </FlexDiv1>
             {(username.length > 0 && !isUsername && (
               <ErrorMsg>{usernameMsg}</ErrorMsg>

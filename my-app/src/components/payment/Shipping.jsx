@@ -336,7 +336,7 @@ export default function Shipping() {
               <CheckDiv2>
                 <p>- 상품금액</p>
                 <CheckP1>
-                  46500 <CheckSpan>원</CheckSpan>
+                  {price} <CheckSpan>원</CheckSpan>
                 </CheckP1>
               </CheckDiv2>
               <CheckDiv2>
@@ -348,13 +348,15 @@ export default function Shipping() {
               <CheckDiv2 cost>
                 <p>- 배송비</p>
                 <CheckP1>
-                  46500<CheckSpan>원</CheckSpan>
+                  {shippingFee}
+                  <CheckSpan>원</CheckSpan>
                 </CheckP1>
               </CheckDiv2>
               <CheckDiv2>
                 <p>- 결제금액</p>
                 <CheckP1 last>
-                  46500<CheckSpan>원</CheckSpan>
+                  {totalPrice}
+                  <CheckSpan>원</CheckSpan>
                 </CheckP1>
               </CheckDiv2>
             </CheckDiv1>

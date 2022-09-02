@@ -76,7 +76,7 @@ export default function BuyingItmes() {
         </div>
       </WrapItemsDiv>
       <FontP1 dash>- </FontP1>
-      <FontP1>{shippingFee}</FontP1>
+      <FontP1>{shippingFee}원</FontP1>
       <FontP1 price>{totalCost}원</FontP1>
     </PayListLi>
   );

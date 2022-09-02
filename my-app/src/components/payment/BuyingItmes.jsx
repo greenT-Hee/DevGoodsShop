@@ -48,7 +48,7 @@ const PayListNameP = styled.p`
 const FontP1 = styled.p`
   font-size: 18px;
   text-align: center;
-  flex-grow: ${(props) => (props.dash ? "1.1" : "1")};
+  width: calc((1280px - 615px) / 3);
   color: ${(props) =>
     props.price ? props.theme.color.black : props.theme.color.gray3};
   font-weight: ${(props) => (props.price ? "700" : "400")};

@@ -23,10 +23,10 @@ const NavUl = styled.ul`
 `;
 
 const NavItemLi1 = styled.li`
-  width: 618px;
+  width: 615px;
 `;
 const NavItemLi2 = styled.li`
-  flex-grow: 1;
+  width: calc((1280px - 615px) / 3);
 `;
 
 const WrapTotalCostDiv = styled.div`

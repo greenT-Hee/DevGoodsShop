@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/DevGoodsShop/static/css/main.0d60897b.css",
-    "main.js": "/DevGoodsShop/static/js/main.2daaea58.js",
+    "main.js": "/DevGoodsShop/static/js/main.f235060f.js",
     "static/media/banner1.PNG": "/DevGoodsShop/static/media/banner1.113be0e752925c0a2e9b.PNG",
     "static/media/banner2.png": "/DevGoodsShop/static/media/banner2.4804455c8dd8bb3a4baa.png",
     "static/media/banner3.png": "/DevGoodsShop/static/media/banner3.c09e986c3907e544e05a.png",
@@ -14,10 +14,10 @@
     "static/media/icon-swiper-2.svg": "/DevGoodsShop/static/media/icon-swiper-2.52e866003f901787c3ec676e65560343.svg",
     "static/media/icon-minus-line.svg": "/DevGoodsShop/static/media/icon-minus-line.73ef1e8c52aa8aab95e50eec7036f567.svg",
     "main.0d60897b.css.map": "/DevGoodsShop/static/css/main.0d60897b.css.map",
-    "main.2daaea58.js.map": "/DevGoodsShop/static/js/main.2daaea58.js.map"
+    "main.f235060f.js.map": "/DevGoodsShop/static/js/main.f235060f.js.map"
   },
   "entrypoints": [
     "static/css/main.0d60897b.css",
-    "static/js/main.2daaea58.js"
+    "static/js/main.f235060f.js"
   ]
 }

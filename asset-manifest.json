@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/greent-hee.github.io/DevGoodsShop/static/css/main.0d60897b.css",
-    "main.js": "/greent-hee.github.io/DevGoodsShop/static/js/main.28a987a8.js",
+    "main.js": "/greent-hee.github.io/DevGoodsShop/static/js/main.0eba9c18.js",
     "static/media/banner1.PNG": "/greent-hee.github.io/DevGoodsShop/static/media/banner1.113be0e752925c0a2e9b.PNG",
     "static/media/banner2.png": "/greent-hee.github.io/DevGoodsShop/static/media/banner2.4804455c8dd8bb3a4baa.png",
     "static/media/banner3.png": "/greent-hee.github.io/DevGoodsShop/static/media/banner3.c09e986c3907e544e05a.png",
@@ -13,10 +13,10 @@
     "static/media/icon-swiper-2.svg": "/greent-hee.github.io/DevGoodsShop/static/media/icon-swiper-2.52e866003f901787c3ec676e65560343.svg",
     "static/media/icon-minus-line.svg": "/greent-hee.github.io/DevGoodsShop/static/media/icon-minus-line.73ef1e8c52aa8aab95e50eec7036f567.svg",
     "main.0d60897b.css.map": "/greent-hee.github.io/DevGoodsShop/static/css/main.0d60897b.css.map",
-    "main.28a987a8.js.map": "/greent-hee.github.io/DevGoodsShop/static/js/main.28a987a8.js.map"
+    "main.0eba9c18.js.map": "/greent-hee.github.io/DevGoodsShop/static/js/main.0eba9c18.js.map"
   },
   "entrypoints": [
     "static/css/main.0d60897b.css",
-    "static/js/main.28a987a8.js"
+    "static/js/main.0eba9c18.js"
   ]
 }

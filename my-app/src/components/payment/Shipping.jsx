@@ -191,17 +191,12 @@ export default function Shipping() {
     total_price: totalPrice,
   };
 
-  console.log(cookie);
-
-  console.log(reciever, phoneNum, address, message, payment);
-  console.log(productId, orderNum, price, totalPrice, "🎉location");
   const order = async (response) => {
     try {
       const response = await AxiosInstance.post("/order/", orderReq, {
         headers: { Authorization: cookie },
       });
       if (response.status === 200) goPayedList();
-      console.log(response);
     } catch {
       console.log("error");
     }

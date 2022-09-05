@@ -54,7 +54,6 @@ export default function PayingList() {
   const shippingFee = location.state.shippingFee;
   const totalCost = parseInt(price * orderNum + shippingFee);
 
-  console.log(orderNum, "payingList");
   return (
     <PayingSection>
       <PayingH2>주문/결제하기</PayingH2>

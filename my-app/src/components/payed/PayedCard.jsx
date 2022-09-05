@@ -30,7 +30,6 @@ export default function PayedCard() {
   const dispatch = useDispatch();
 
   const cookie = getCookie("refreshToken");
-  console.log(payedProduct, "주문리덕스💖");
 
   const getPayedList = async () => {
     try {
@@ -38,7 +37,6 @@ export default function PayedCard() {
         headers: { Authorization: cookie },
       });
       dispatch(payedProductList(response.data.results));
-      console.log(response.data.results, "😎주문내역응답");
     } catch {
       console.log("error");
     }

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const CardLi = styled.li`
@@ -57,7 +57,6 @@ const LoadingP = styled.p`
 export default function ProductItem() {
   const products = useSelector((state) => state.allProducts.products);
   const nav = useNavigate();
-  console.log("Products: ", products);
 
   const renderList = products.map((item) => {
     const { image, product_id, product_name, product_info, price, stock } =

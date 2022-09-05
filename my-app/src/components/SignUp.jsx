@@ -117,7 +117,6 @@ const SignUp = () => {
       const response = await AxiosInstance.post("/accounts/signup/valid/", {
         username: username,
       });
-      console.log(response);
       setUsernameMsg(response.data.Success);
     } catch {
       setUsernameMsg("이미 존재하는 아이디입니다.");
@@ -140,7 +139,6 @@ const SignUp = () => {
         phone_number: phoneNum,
         name: name,
       });
-      console.log(response);
       if (response.status === 201) {
         successJoin();
       }
@@ -160,7 +158,6 @@ const SignUp = () => {
     e.preventDefault();
     signUp();
   };
-  console.log(username, password1, password2, name, phoneNum);
 
   // input값 입력 & 유효성 검사
   //아이디

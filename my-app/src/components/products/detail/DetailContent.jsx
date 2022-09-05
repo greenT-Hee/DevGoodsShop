@@ -66,7 +66,6 @@ export default function DetailContent() {
     shipping_method,
   } = product;
 
-  console.log("product!🐰", product);
   return (
     <ProductDetailArticle>
       {Object.keys(product).length === 0 ? (

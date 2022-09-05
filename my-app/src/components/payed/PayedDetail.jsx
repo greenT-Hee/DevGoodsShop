@@ -71,8 +71,6 @@ export default function PayedDetail() {
     address_message,
   } = location.state;
 
-  console.log(shippingFee, prodcuct_price, "👀");
-
   return (
     <>
       <Div2>

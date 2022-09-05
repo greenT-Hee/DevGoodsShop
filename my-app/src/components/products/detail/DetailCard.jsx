@@ -11,7 +11,6 @@ export default function DetailCard() {
   const product = useSelector((state) => state);
   const dispatch = useDispatch();
   const productId = localStorage.getItem("id");
-  console.log("DetilaCard💚", product);
 
   const getProductDtail = async () => {
     try {

@@ -54,7 +54,6 @@ export default function OrderNum() {
   const product = useSelector((state) => state.detailProduct);
   const { stock, price } = product;
   const [orderNum, setOrderNum] = useState(1);
-  console.log("🎉", product);
 
   const minusOrder = () => {
     if (stock) {

@@ -44,7 +44,6 @@ const Button = styled.button`
 export default function PayedList() {
   const payedProduct = useSelector((state) => state.payedProduct.products);
   const nav = useNavigate();
-  console.log(payedProduct, "🛒");
 
   const renderList = payedProduct.map((item) => {
     const {

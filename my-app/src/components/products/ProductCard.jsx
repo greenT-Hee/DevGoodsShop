@@ -21,8 +21,6 @@ export default function ProductCard() {
   const getProductList = async () => {
     try {
       const response = await AxiosInstance.get("products/");
-      console.log(products);
-      console.log("에효 :", response.data.results);
       dispatch(setProducts(response.data.results));
     } catch {
       console.error("Error");

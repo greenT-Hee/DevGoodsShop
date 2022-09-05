@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { useLocation } from "react-router";
-import { useSelector } from "react-redux";
 
 const PayListLi = styled.li`
   position: relative;

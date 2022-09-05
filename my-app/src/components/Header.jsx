@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import mainLogo from "../assets/mainLogo.png";
-import cartLogo from "../assets/icon-shopping-cart.svg";
 import userImg from "../assets/icon-user.svg";
 import { Link, useNavigate } from "react-router-dom";
 import MyModal from "./MyModal";

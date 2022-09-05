@@ -1,14 +1,13 @@
 import { useEffect } from "react";
 import AxiosInstance from "../../../Axios";
 import DetailContent from "./DetailContent";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   detailProduct,
   removeSelectedProduct,
 } from "../../../redux/actions/productsAction";
 
 export default function DetailCard() {
-  const product = useSelector((state) => state);
   const dispatch = useDispatch();
   const productId = localStorage.getItem("id");
 

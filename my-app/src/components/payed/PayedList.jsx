@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 
 const Li = styled.li`

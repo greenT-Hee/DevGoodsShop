@@ -26,7 +26,7 @@ const theme = {
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/login" element={<LoginPage />} />

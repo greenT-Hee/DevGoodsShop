@@ -149,7 +149,6 @@ const CheckButton = styled.button`
 export default function Shipping() {
   const cookie = getCookie("refreshToken");
   const location = useLocation();
-  const image = location.state.image;
   const productId = location.state.productId;
   const orderNum = location.state.orderNum;
   const price = location.state.price;
@@ -323,7 +322,7 @@ export default function Shipping() {
                 type="radio"
                 id="kakaoPay"
                 name="pay"
-                value="KAKAOPAY "
+                value="KAKAOPAY"
                 onChange={handlePayment}
               />
               <Label2 htmlFor="kakaoPay">카카오페이</Label2>

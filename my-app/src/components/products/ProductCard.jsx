@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import AxiosInstance from "../../Axios";
 import ProductItem from "./productItem";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setProducts } from "../../redux/actions/productsAction";
 
 const CardUl = styled.ul`
@@ -15,7 +15,6 @@ const CardUl = styled.ul`
 `;
 
 export default function ProductCard() {
-  const products = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const getProductList = async () => {

@@ -4,7 +4,6 @@ import Banner from "../components/banner/Banner";
 import ProductCard from "../components/products/ProductCard";
 import Footer from "../components/Footer";
 import { getCookie } from "../Cookie";
-import MyModal from "../components/MyModal";
 
 const Home = () => {
   const isCookie = getCookie("refreshToken");

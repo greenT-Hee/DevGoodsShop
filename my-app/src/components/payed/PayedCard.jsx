@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import AxiosInstance from "../../Axios";
 import { getCookie } from "../../Cookie";
 import { payedProductList } from "../../redux/actions/productsAction";
@@ -26,7 +26,6 @@ const Ul = styled.ul`
 `;
 
 export default function PayedCard() {
-  const payedProduct = useSelector((state) => state.payedProduct.products);
   const dispatch = useDispatch();
 
   const cookie = getCookie("refreshToken");

@@ -59,8 +59,6 @@ export default function PayedDetail() {
   const location = useLocation();
 
   const {
-    prodcuct_price,
-    shippingFee,
     total_price,
     order_number,
     order_quantity,

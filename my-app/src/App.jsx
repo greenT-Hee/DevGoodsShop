@@ -1,4 +1,4 @@
-import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { Route, BrowserRouter, Routes, HashRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import "../src/styles/reset.css";
 import "../src/styles/global.css";
@@ -26,7 +26,7 @@ const theme = {
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <HashRouter basename={window.location.pathname || ""}>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/login" element={<LoginPage />} />
@@ -36,7 +36,7 @@ function App() {
           <Route path="/payedList" element={<PayedCard />} />
           <Route path="/payedDetail/:order_num" element={<PayedDetailPage />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </ThemeProvider>
   );
 }

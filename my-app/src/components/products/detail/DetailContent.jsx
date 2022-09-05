@@ -46,6 +46,14 @@ const SoldoutSpan = styled.span`
   font-size: 18px;
 `;
 
+const LoadingP = styled.p`
+  text-align: center;
+  padding-top: 150px;
+  font-size: 42px;
+  font-weight: 900;
+  color: ${(props) => props.theme.color.main};
+`;
+
 export default function DetailContent() {
   const product = useSelector((state) => state.detailProduct);
   const {
@@ -61,21 +69,27 @@ export default function DetailContent() {
   console.log("product!🐰", product);
   return (
     <ProductDetailArticle>
-      <ProdcuctImg src={image} alt="상품 사진" />
-      <div>
-        <ProductInfoP>{product_info}</ProductInfoP>
-        <ProductNameP>{product_name}</ProductNameP>
-        <ProductPriceStrong>
-          {price}
-          <ProductPriceSpan>원</ProductPriceSpan>
-          {stock === 0 && <SoldoutSpan>{` (품절)`}</SoldoutSpan>}
-        </ProductPriceStrong>
-        {/* 주문 수량 */}
-        <DeliverySpan>
-          {shipping_method} / {shipping_fee}원
-        </DeliverySpan>
-        <OrderProduct />
-      </div>
+      {Object.keys(product).length === 0 ? (
+        <LoadingP>Loading...🛒</LoadingP>
+      ) : (
+        <>
+          <ProdcuctImg src={image} alt="상품 사진" />
+          <div>
+            <ProductInfoP>{product_info}</ProductInfoP>
+            <ProductNameP>{product_name}</ProductNameP>
+            <ProductPriceStrong>
+              {price}
+              <ProductPriceSpan>원</ProductPriceSpan>
+              {stock === 0 && <SoldoutSpan>{` (품절)`}</SoldoutSpan>}
+            </ProductPriceStrong>
+            {/* 주문 수량 */}
+            <DeliverySpan>
+              {shipping_method} / {shipping_fee}원
+            </DeliverySpan>
+            <OrderProduct />
+          </div>
+        </>
+      )}
     </ProductDetailArticle>
   );
 }

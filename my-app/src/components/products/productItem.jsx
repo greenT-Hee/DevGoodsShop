@@ -48,7 +48,7 @@ const SoldoutSpan = styled.span`
 `;
 
 const LoadingP = styled.p`
-  text-align: center;
+  margin: 0 auto;
   font-size: 42px;
   font-weight: 900;
   color: ${(props) => props.theme.color.main};

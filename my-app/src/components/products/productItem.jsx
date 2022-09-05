@@ -47,6 +47,13 @@ const SoldoutSpan = styled.span`
   color: ${(props) => props.theme.color.point};
 `;
 
+const LoadingP = styled.p`
+  text-align: center;
+  font-size: 42px;
+  font-weight: 900;
+  color: ${(props) => props.theme.color.main};
+`;
+
 export default function ProductItem() {
   const products = useSelector((state) => state.allProducts.products);
   const nav = useNavigate();
@@ -76,8 +83,8 @@ export default function ProductItem() {
   });
   return (
     <>
+      {Object.keys(products).length === 0 && <LoadingP>Loading...🛒</LoadingP>}
       {renderList}
-      {products === "[]" && <h2 style={{ color: "red" }}>Loading...</h2>}
     </>
   );
 }

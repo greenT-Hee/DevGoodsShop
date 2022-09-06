@@ -1,5 +1,8 @@
 # DevGoodsShop
-🔗 <a href="https://idyllic-babka-c6a5bf.netlify.app/#/">배포 페이지 바로가기</a>
+
+>🔗 <a href="https://idyllic-babka-c6a5bf.netlify.app/#/">배포 페이지 바로가기</a>
+
+>test 계정: green123/qwer123456
 
 개발자들이 보다 나은 업무 환경을 만들 수 있는 물건들을 판매하는 REST API 기반의 오픈마켓 서비스입니다. 회원가입을 통해 로그인을 한 후, 원하는 개수만큼의상품을 구매할 수 있으며, 주문 내역을 바로 확인할 수 있습니다.
 

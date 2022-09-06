@@ -77,7 +77,14 @@
 
 
 ## 🔫 트러블 슈팅 
-- cookie undefined
+#### POST 요청에서 401 인증 문제 발생
+- 문제 상황: 결제 주문 POST 요청 시, 401 AUTHORIZED 인증 문제 (토큰이 필요한 요청)
+- 원인: axios instance에서 미리 쿠키를 선언하여 `axios.create(baseURL: https://~ , {headers{Authorization: cookie}})`를 담아 사용
+   - 로그인하지 않은 상태라서 undefined가 cookie에 미리 선언되었고, 로그인 성공 후에도 cookie 값에 token이 담기지 않고 계속 undefined가 뜸 
+- 해결: 토큰 인증이 필요한 작업을 할 때마다 적어줌 
+ex) `axios.post(url, {headers{Authorized:cookie}})`
+
+
 
 ## ✨ 레슨런
 - axios 인스턴스를 사용하여 url 및 헤더 관리하기

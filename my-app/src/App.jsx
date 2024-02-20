@@ -12,7 +12,7 @@ import PayedDetailPage from "./pages/PayedDetailPage";
 
 const theme = {
   color: {
-    main: "#fc7575",
+    main: "#6B37FF",
     point: " #26b887",
     white: "#fff",
     gray1: "#F2F2F2",

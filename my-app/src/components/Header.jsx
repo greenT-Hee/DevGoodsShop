@@ -1,19 +1,29 @@
 import styled from "styled-components";
 import mainLogo from "../assets/mainLogo.png";
+import cartLogo from "../assets/icon-shopping-cart.svg";
 import userImg from "../assets/icon-user.svg";
 import { Link, useNavigate } from "react-router-dom";
 import MyModal from "./MyModal";
 import { useState } from "react";
 
 const Header = styled.header`
+  width: 100%;
+  padding: 20px;
   background: ${(props) => props.theme.color.white};
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
-  padding: 22px 100px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 10000;
+  box-sizing: border-box;
 `;
 
 const WrapHeader = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 `;
 
 const LogoWrapDiv = styled.div`
@@ -22,24 +32,14 @@ const LogoWrapDiv = styled.div`
 `;
 
 const MainLogo = styled.img`
-  width: 180px;
-
-  padding: 0px 30px 0 0;
-`;
-
-const SearchInput = styled.input`
-  width: 400px;
-  box-sizing: border-box;
-  background: ${(props) => props.theme.color.white};
-  border: 2px solid ${(props) => props.theme.color.main};
-  border-radius: 50px;
-  padding: 13px 22px;
+  width: 300px;
 `;
 
 const WrapIcon = styled.ul`
   display: flex;
-  position: relative;
+  align-items: flex-end;
   gap: 26px;
+  float: right;
 `;
 
 const WrapIconLi = styled.li`
@@ -73,18 +73,14 @@ export const HomeHeader = () => {
           <Link to="/">
             <MainLogo src={mainLogo} alt="홈페이지 로고" />
           </Link>
-          <label htmlFor="search" className="ir">
-            검색창
-          </label>
-          <SearchInput type="search" id="search" />
         </LogoWrapDiv>
         <WrapIcon>
-          {/* <li>
+          <li>
             <button>
               <HeaderIcon src={cartLogo} alt="장바구니" />
               <HeaderText>장바구니</HeaderText>
             </button>
-          </li> */}
+          </li>
           <li>
             <button onClick={goLoginPage}>
               <HeaderIcon src={userImg} alt="로그인" />
@@ -117,19 +113,14 @@ export const ProductListHeader = () => {
           <label htmlFor="search" className="ir">
             검색창
           </label>
-          <SearchInput
-            type="search"
-            id="search"
-            placeholder="검색어를 입력하세요"
-          />
         </LogoWrapDiv>
         <WrapIcon>
-          {/* <WrapIconLi>
+          <WrapIconLi>
             <button href="#none">
               <HeaderIcon src={cartLogo} alt="장바구니" />
               <HeaderText>장바구니</HeaderText>
             </button>
-          </WrapIconLi> */}
+          </WrapIconLi>
           <WrapIconLi>
             <button onClick={handleModal}>
               <HeaderIcon src={userImg} alt="마이페이지" />

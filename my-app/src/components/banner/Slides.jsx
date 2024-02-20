@@ -5,8 +5,9 @@ import { useState } from "react";
 
 const SlideWrpaDiv = styled.div`
   position: relative;
-  width: 100%;
-  height: 600px;
+  max-width: 1920px;
+  height: 500px;
+  margin: 0 auto;
   overflow: hidden;
 `;
 
@@ -69,14 +70,12 @@ const ArrowImg = styled.img`
 export default function Slides({ slides }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const slidestyle = {
+    position: "absolute",
     width: "100%",
     height: "100%",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    position: "absolute",
-    backgroundImage: `url(${slides[currentIndex].url})`,
-    zIndex: "5",
+    background:  `url(${slides[currentIndex].url}) center no-repeat`,
     top: "0",
+    zIndex: "5",
   };
 
   const goPrev = () => {

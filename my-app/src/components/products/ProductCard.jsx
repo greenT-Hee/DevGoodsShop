@@ -14,6 +14,15 @@ const CardUl = styled.ul`
   margin: 80px auto;
 `;
 
+const SearchInput = styled.input`
+  width: 400px;
+  box-sizing: border-box;
+  background: ${(props) => props.theme.color.white};
+  border: 2px solid ${(props) => props.theme.color.main};
+  border-radius: 50px;
+  padding: 13px 22px;
+`;
+
 export default function ProductCard() {
   const dispatch = useDispatch();
 
@@ -30,8 +39,14 @@ export default function ProductCard() {
   }, []);
 
   return (
-    <CardUl>
-      <ProductItem />
-    </CardUl>
+    <>
+    <div>
+      <label htmlFor="search" className="ir">검색창</label>
+      <SearchInput type="search" id="search" />
+    </div>
+      <CardUl>
+        <ProductItem />
+      </CardUl>
+    </>
   );
 }

@@ -9,8 +9,12 @@ import ProductDetail from "./pages/ProductDetail";
 import PaymentPage from "./pages/PaymentPage";
 import PayedCard from "./pages/PayedList";
 import PayedDetailPage from "./pages/PayedDetailPage";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 
-
+const queryClient = new QueryClient();
 const theme = {
   color: {
     main: "#6B37FF",
@@ -26,19 +30,21 @@ const theme = {
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <BrowserRouter basename={window.location.pathname || ""}>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signUp" element={<SignUpPage />} />
-          <Route path="/productDetail/:id" element={<ProductDetail />} />
-          <Route path="/payment" element={<PaymentPage />} />
-          <Route path="/payedList" element={<PayedCard />} />
-          <Route path="/payedDetail/:order_num" element={<PayedDetailPage />} />
-        </Routes>
-      </BrowserRouter>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter basename={window.location.pathname || ""}>
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signUp" element={<SignUpPage />} />
+            <Route path="/productDetail/:id" element={<ProductDetail />} />
+            <Route path="/payment" element={<PaymentPage />} />
+            <Route path="/payedList" element={<PayedCard />} />
+            <Route path="/payedDetail/:order_num" element={<PayedDetailPage />} />
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
 

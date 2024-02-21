@@ -1,27 +1,25 @@
-import { useEffect, useState } from "react";
-import AxiosInstance from "../../Axios";
+import {  useState } from "react";
 import ProductItem from "./productItem";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { setProducts } from "../../redux/actions/productsAction";
 import searchIcon from "../../assets/icon-search.svg"
 
 const CardUl = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  width: 1280px;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) ;
   box-sizing: border-box;
-  gap: 70px;
-  margin: 0 auto;
+  gap: 40px;
+  margin: 80px auto;
+  padding: 0 20px;
 `;
 
 const WrapSearch = styled.div`
   position: relative;
-  width: fit-content;
-  margin: 40px auto 60px;
+  max-width: 400px;
+  margin: 40px auto 0;
 `
 const SearchInput = styled.input`
-  width: 400px;
+  width: 100%;
   box-sizing: border-box;
   background: ${(props) => props.theme.color.white};
   border: 2px solid ${(props) => props.theme.color.main};
@@ -41,28 +39,9 @@ const SearchBtn = styled.button`
 `
 
 export default function ProductCard() {
-  const products = useSelector((state) => state.allProducts.products);
-  const dispatch = useDispatch();
   const [searchVal, setSearchVal] = useState("");
-
-  const getProductList = async () => {
-    try {
-      const response = await AxiosInstance.get("products/");
-      dispatch(setProducts(response.data.results));
-    } catch {
-      console.error("Error");
-    }
-  };
-  useEffect(() => {
-    getProductList();
-  }, []);
-
   const searchProduct = (e) => {
-    // console.log(products.product_info)
-    // console.log(products.product_name)
-    // if(searchVal === "") return;
-    const searchResult =  products.filter( ele => ele.product_name.includes(searchVal) || ele.product_info.includes(searchVal));
-    console.log(searchResult)
+    // const searchResult =  products.filter( ele => ele.product_name.includes(searchVal) || ele.product_info.includes(searchVal));
   }
 
   return (

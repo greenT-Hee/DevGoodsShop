@@ -10,6 +10,7 @@ import PaymentPage from "./pages/PaymentPage";
 import PayedCard from "./pages/PayedList";
 import PayedDetailPage from "./pages/PayedDetailPage";
 
+
 const theme = {
   color: {
     main: "#6B37FF",

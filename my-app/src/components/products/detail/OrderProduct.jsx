@@ -50,12 +50,11 @@ const OrderNumLi = styled.li`
     props.middle ? `1px solid ${props.theme.color.gray2}` : ""};
 `;
 
-export default function OrderNum() {
-  const product = useSelector((state) => state.detailProduct);
-  const { stock, price } = product;
+export default function OrderNum({stock, price, shipping_fee}) {
   const [orderNum, setOrderNum] = useState(1);
 
   const minusOrder = () => {
+    if(orderNum === 1) return;
     if (stock) {
       setOrderNum(parseInt(orderNum - 1));
     }
@@ -85,9 +84,9 @@ export default function OrderNum() {
         </OrderNumUl>
       </WrapOrderNumDiv>
       {/* 총 수량, 총 가격 */}
-      <CalulatePrice orderNum={orderNum} price={price} />
+      <CalulatePrice orderNum={orderNum} price={price} shipping_fee={shipping_fee} />
       {/* 구매 버튼 */}
-      <OrderButtons orderNum={orderNum} />
+      <OrderButtons orderNum={orderNum} stock={stock}/>
     </>
   );
 }

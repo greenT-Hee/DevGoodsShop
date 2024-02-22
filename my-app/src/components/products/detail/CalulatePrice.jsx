@@ -27,14 +27,14 @@ const UnitSpan = styled.span`
   font-size: 18px;
 `;
 
-export default function CalulatePrice({ orderNum, price }) {
+export default function CalulatePrice({ orderNum, price, shipping_fee }) {
   return (
     <WrapCostDiv>
       <TotalSpan>
         총 수량 <TotalNumberSpan>{orderNum}</TotalNumberSpan>개 |{" "}
       </TotalSpan>
       <TotalNumberStrong>
-        {parseInt(orderNum * price)}
+        {parseInt((orderNum * price) + shipping_fee).toLocaleString()}
         <UnitSpan> 원</UnitSpan>
       </TotalNumberStrong>
     </WrapCostDiv>

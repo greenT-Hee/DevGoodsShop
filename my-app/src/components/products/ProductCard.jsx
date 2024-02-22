@@ -2,6 +2,8 @@ import {  useState } from "react";
 import ProductItem from "./productItem";
 import styled from "styled-components";
 import searchIcon from "../../assets/icon-search.svg"
+import { useQuery } from "@tanstack/react-query";
+import AxiosInstance from "../../Axios";
 
 const CardUl = styled.ul`
   max-width: 1200px;
@@ -39,6 +41,13 @@ const SearchBtn = styled.button`
 `
 
 export default function ProductCard() {
+  const getProducts = async () => {
+    const res = await AxiosInstance.get('/products');
+    return res.data.results;
+  };
+  
+  const { isLoading, data, error } = useQuery({ queryKey: ['products'], queryFn: getProducts });
+
   const [searchVal, setSearchVal] = useState("");
   const searchProduct = (e) => {
     // const searchResult =  products.filter( ele => ele.product_name.includes(searchVal) || ele.product_info.includes(searchVal));
@@ -54,7 +63,7 @@ export default function ProductCard() {
         </SearchBtn>
       </WrapSearch>
       <CardUl>
-        <ProductItem />
+        <ProductItem isLoading={isLoading} error={error} data={data}/>
       </CardUl>
     </>
   );

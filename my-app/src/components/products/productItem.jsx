@@ -56,27 +56,25 @@ const LoadingP = styled.p`
 `;
 
 
-export default function ProductItem() {
+export default function ProductItem({isLoading, data, error}) {
   const nav = useNavigate();
-  const getProducts = async () => {
-    const res = await AxiosInstance.get('/products');
-    return res.data.results;
+  const goDetail = (pid) => {
+    localStorage.setItem('pid', pid);
+    nav(`/productDetail/${pid}`);
   };
-  
-  const { isLoading, data, error } = useQuery({ queryKey: ['getProducts'], queryFn: getProducts });
-  
+
   return (
     isLoading ? <LoadingP>잠시만 기다려 주세요 😭</LoadingP> :
     data?.map((ele) => {
       return (
         <CardLi key={ele.product_id}>
-          <ProductImgWrap onClick={() => {nav(`productDetail/${ele.product_id}`)}}>
+          <ProductImgWrap onClick={() => goDetail(ele.product_id)}>
             <ProdcuctImg src={ele.image} alt="상품 사진" />
           </ProductImgWrap>
           <ProductInfoSpan>{ele.product_info}</ProductInfoSpan>
           <ProductNameSpan>{ele.product_name}</ProductNameSpan>
           <ProductPriceStrong>
-            {ele.price}
+            {ele.price.toLocaleString()}
             <ProductPriceSpan>원</ProductPriceSpan>
             {ele.stock === 0 && <SoldoutSpan>{` (품절)`}</SoldoutSpan>}
           </ProductPriceStrong>

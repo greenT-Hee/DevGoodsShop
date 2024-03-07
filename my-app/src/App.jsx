@@ -25,6 +25,7 @@ const theme = {
     gray3: "#767676",
     gray4: "#333333",
     black: "#000",
+    red: "#fe6161",
   },
 };
 
@@ -36,7 +37,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/signUp" element={<SignUpPage />} />
+            <Route path="/signup" element={<SignUpPage />} />
             <Route path="/productDetail/:pid" element={<ProductDetail />} />
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/payedList" element={<PayedCard />} />

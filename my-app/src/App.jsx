@@ -41,6 +41,7 @@ function App() {
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/payedList" element={<PayedCard />} />
             <Route path="/payedDetail/:order_num" element={<PayedDetailPage />} />
+            <Route path="/*" element={<Home />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

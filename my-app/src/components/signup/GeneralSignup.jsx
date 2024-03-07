@@ -1,23 +1,11 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
-import mainLogo from "../assets/mainLogo.png";
-import AxiosInstance from "../Axios";
-import { Link } from "react-router-dom";
-
-const LoginSection = styled.section`
-  margin: 80px auto;
-  width: 550px;
-`;
-
-const MainLogo = styled.img`
-  width: 238px;
-  margin-left: 156px;
-`;
+import mainLogo from "../../assets/mainLogo.png";
+import AxiosInstance from "../../Axios";
 
 const LoginDiv = styled.div`
-  width: 550px;
-  margin-top: 50px;
+  max-width: 100%;
   padding: 35px;
   box-sizing: border-box;
   border-radius: 10px;
@@ -88,7 +76,7 @@ const CheckIdBtn = styled.button`
       : `${props.theme.color.main}`};
 `;
 
-const SignUp = () => {
+const GeneralSignup = () => {
   // input 값 초기 설정
   const [username, setUsername] = useState("");
   const [password1, setPassword1] = useState("");
@@ -235,11 +223,7 @@ const SignUp = () => {
   }, []);
 
   return (
-    <LoginSection>
-      <h2 className="ir">로그인 페이지</h2>
-      <Link to="/">
-        <MainLogo src={mainLogo} alt="메인로고" />
-      </Link>
+    <>
       <LoginDiv>
         <form onSubmit={handleSubmitJoin}>
           <JoinLabel htmlFor="username">
@@ -330,22 +314,22 @@ const SignUp = () => {
           </JoinLabel>
         </form>
       </LoginDiv>
-      <form onSubmit={handleSubmitJoin}>
-        <CheckBoxP>
-          <input type="checkbox" required />
-          호두샵의 <a href="#none">이용약관</a> 및{" "}
-          <a href="#none">개인정보처리방침</a>에 대한 내용을 확인하였고
-          동의합니다.
-        </CheckBoxP>
-        {((!username || !password1 || !password2 || !phoneNum || !name) && (
-          <LoginBtn disabled>가입하기</LoginBtn>
-        )) ||
-          (username && password1 && password2 && phoneNum && name && (
-            <LoginBtn able>가입하기</LoginBtn>
-          ))}
-      </form>
-    </LoginSection>
+        <form onSubmit={handleSubmitJoin}>
+          <CheckBoxP>
+            <input type="checkbox" required />
+            호두샵의 <a href="#none">이용약관</a> 및{" "}
+            <a href="#none">개인정보처리방침</a>에 대한 내용을 확인하였고
+            동의합니다.
+          </CheckBoxP>
+          {((!username || !password1 || !password2 || !phoneNum || !name) && (
+            <LoginBtn disabled>가입하기</LoginBtn>
+          )) ||
+            (username && password1 && password2 && phoneNum && name && (
+              <LoginBtn able>가입하기</LoginBtn>
+            ))}
+        </form>
+    </>
   );
 };
 
-export default SignUp;
+export default GeneralSignup;

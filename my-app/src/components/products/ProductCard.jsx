@@ -6,9 +6,9 @@ import { useQuery } from "@tanstack/react-query";
 import AxiosInstance from "../../Axios";
 
 const CardUl = styled.ul`
-  max-width: 1200px;
+  width: 1200px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) ;
+  grid-template-columns: repeat(3, 1fr);
   box-sizing: border-box;
   gap: 40px;
   margin: 80px auto;
@@ -50,7 +50,8 @@ export default function ProductCard() {
 
   const [searchVal, setSearchVal] = useState("");
   const searchProduct = (e) => {
-    // const searchResult =  products.filter( ele => ele.product_name.includes(searchVal) || ele.product_info.includes(searchVal));
+    const searchResult =  data?.filter( ele => ele.product_name.includes(searchVal) || ele.product_info.includes(searchVal));
+    console.log(searchResult)
   }
 
   return (

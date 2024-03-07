@@ -6,11 +6,13 @@ import AxiosInstance from "../../Axios";
 import { useEffect } from "react";
 
 const CardLi = styled.li`
+  max-width: 100%;
   box-sizing: border-box;
   border-radius: 10px;
-`;
+  `;
 
 const ProductImgWrap = styled.button`
+   max-width: 100%;
   border: 1px solid ${(props) => props.theme.color.gray2};
   border-radius: 10px;
 `;

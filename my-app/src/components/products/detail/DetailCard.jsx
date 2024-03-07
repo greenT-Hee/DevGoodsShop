@@ -60,7 +60,7 @@ export default function DetailCard() {
   const productId = localStorage.getItem("pid");
 
   const getProductDtail = async () => {
-    const res = await AxiosInstance.get(`/products/${productId}/`);
+    const res = await AxiosInstance.get(`/products/${productId}`);
     localStorage.removeItem('pid');
     return res.data;
   };
@@ -71,7 +71,7 @@ export default function DetailCard() {
     return (
       isLoading? <LoadingP>상세 정보 불러오는 중</LoadingP> :
         <ProductDetailArticle>
-          <ProdcuctImg src={data.image} alt="상품 사진" />
+          <ProdcuctImg src={data.image ? data.image : ""} alt="상품 사진" />
             <div>
               <ProductInfoP>{data.product_info}</ProductInfoP>
               <ProductNameP>{data.product_name}</ProductNameP>
